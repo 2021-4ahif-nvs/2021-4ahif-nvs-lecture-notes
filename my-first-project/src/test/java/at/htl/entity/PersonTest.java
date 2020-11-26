@@ -15,7 +15,6 @@ import javax.transaction.*;
 
 import static org.assertj.db.api.Assertions.assertThat;
 import static org.assertj.db.output.Outputs.output;
-import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -25,7 +24,7 @@ class PersonTest {
     EntityManager em;
 
     @Inject
-    UserTransaction tm;
+    UserTransaction tx;
 
     static final String DATABASE = "db";
     static final String USERNAME = "app";
@@ -45,7 +44,7 @@ class PersonTest {
     }
 
     /**
-     * Transaktion ... kleinste unteilbare Aktion
+     * Transaktion ... kleinste unteilbare Einheit
      * zB Überweisung in einer Bank
      *    - von Konto A wird abgebucht
      *    - auf Konto B wird aufgebucht
@@ -54,10 +53,10 @@ class PersonTest {
     @Test
     @Order(10)
     void createPerson() throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
-        Person susi = new Person("susi");
-        tm.begin();
+        Person susi = new Person("Franzi");
+        tx.begin();
         em.persist(susi);
-        tm.commit();
+        tx.commit();
         Table personTable = new Table(getDataSource(), "person");
         output(personTable).toConsole();
         assertThat(personTable).hasNumberOfRows(1);
@@ -65,14 +64,17 @@ class PersonTest {
 
     @Test
     @Order(20)
-    @Transactional
+    //@Transactional
     void updatePersonWithoutMerge() throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
         Person susi = new Person("susi");
+        tx.begin();
         em.persist(susi);
+        System.out.println(susi.getId());
         susi.setName("Suzie Quattro");
-//        Table personTable = new Table(getDataSource(), "person");
-//        output(personTable).toConsole();
-//        assertThat(personTable).hasNumberOfRows(1);
-        fail("not yet implemented");
+        tx.commit();
+        Table personTable = new Table(getDataSource(), "person");
+        output(personTable).toConsole();
+        assertThat(personTable).hasNumberOfRows(1);
+        //fail("not yet implemented");
     }
 }

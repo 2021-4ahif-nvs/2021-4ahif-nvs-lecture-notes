@@ -609,7 +609,7 @@ image:lifecycles.png[]
 
 === Transaktion
 
-* Transaktion ... kleinste unteilbare Aktion
+* Transaktion ... kleinste unteilbare Einheit
 * zB Überweisung in einer Bank
 **    - von Konto A wird abgebucht
 **    - auf Konto B wird aufgebucht
@@ -662,3 +662,108 @@ https://assertj.github.io/doc
 * ....
 
 https://www.objectdb.com/java/jpa/query/named
+
+== 2020-11-26
+
+=== Persistence Context
+
+.Was ist der Persistence-Context
+[source,java]
+----
+Person susi = new Person("susi");
+em.persist(susi);
+susi.setName("Suzie Quattro");
+----
+
+.Inhalt der table nach Ausführung (Objekt befindet sich im Zustand "managed")
+----
+[person table]
+|-----------|---------|-----------|---------------|
+|           |         | *         |               |
+|           | PRIMARY | ID        | NAME          |
+|           | KEY     | (NUMBER)  | (TEXT)        |
+|           |         | Index : 0 | Index : 1     |
+|-----------|---------|-----------|---------------|
+| Index : 0 | 1       | 1         | Suzie Quattro |
+|-----------|---------|-----------|---------------|
+----
+
+* Begriffspaar:
+** transient ... flüchtig
+** persistent ... dauerhaft speichern
+
+
+=== Arten von Beziehungen zwischen Objekten
+
+==== Vererbung
+
+[plantuml,vererbung,png]
+----
+@startuml
+class Vehicle {
+  brand: String
+  model: String
+}
+class Pkw {
+  isCabrio: boolean
+}
+class Lkw
+Vehicle <|-- Lkw
+Vehicle <|-- Pkw
+@enduml
+----
+
+[source,java]
+----
+Pkw kaefer = new Pkw();
+----
+
+* 3 Strategien
+** SINGLE_TABLE
+** TABLE_CLASS (table per concrete class)
+** joined
+
+==== Aggregation
+
+* besteht-aus, consists-of
+* Objekte können zerstörungsfrei getrennt werden
+* Bsp: Auto und Autoreifen
+
+[plantuml,aggregation,png]
+----
+@startuml
+Automobil o-- Reifen : aggregation
+@enduml
+----
+
+==== Komposition
+
+* besteht-aus, consists-of
+* Objekte können nicht zerstörungsfrei getrennt werden
+* Bsp
+** Buch - Kapitel
+** Haus - Etage
+
+[plantuml,komposition,png]
+----
+@startuml
+Haus *-- Etage : komposition
+@enduml
+----
+
+
+==== Assoziation (<use>-Beziehung)
+
+in verschiedenen Multiplizitäten (Kardinalität)
+
+* 1:*
+* 1:1
+* \*:*
+
+[plantuml,assoziation,png]
+----
+@startuml
+Class1 "*" ---> "1" Class2 : assoziation >
+Person "1" <--- "*" Hobby : übt aus >
+@enduml
+----
