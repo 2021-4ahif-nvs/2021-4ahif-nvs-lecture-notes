@@ -1,0 +1,2255 @@
+= Assignment 02 Grading
+Thomas Stütz
+1.1.0, 2020-09-21: crud endpoint for a single entity
+ifndef::imagesdir[:imagesdir: images]
+//:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
+:sourcedir: ../src/main/java
+:icons: font
+:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+//icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc]
+//icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template]
+//icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+// print the toc here (not at the default position)
+//toc::[]
+
+
+
+Download am 2020-11-28 19:22 and subsequent
+//[%collapsible%open]
+//[%collapsible]
+//====
+[cols="1,1,8,2"]
+
+|===
+|lfd.Nr. |Name |Kommentar |Note
+
+
+
+|{counter:katnr}
+|01AD
+a|
+== Allgemeines
+IMPORTANT: Angabe lesen -> the quarkus-project is located in the root of the git repo
+
+Dein Quarkus-Projekt befindet sich in einem Sub-Dir des git repos.
+icon:thumbs-down[]
+
+== Datenmodell
+
+.Bin mir ziemlich sicher, dass das kein Class Diagram ist
+image:a02-andricic-cld.png[]
+
+.Wer suchet, der findet
+image:a02-andricic-cld2.png[]
+
+. Eine id ist eigentlich nicht notwendig. Das Schlüsselkonzept gibt es so in der oo-Programmierung nicht.
+. Long als @id (Objekttyp). Jetzt noch egal, aber mit Datenbanken wichtig.
+. Das Klassendiagramm ist falsch!
+.. Ein Autor schreibt einen Artikel -> ok
+.. Ein Leser liest einen Artikel -> ev. auch ok
+*** Allerdings kannn ein Artikel nur von einem Leser gelesen werden -> icon:thumbs-down[]
+.. Review ist falsch positioniert (wie man an der nichgt eingezeichneten Assoziation `reviewedArticle` sieht)
+*** Review ist eigentlich die \*:* - Auflösung zwischen Article und Reader
+*** Ein Artikel kann von mehreren Lesern gelesen werden
+*** Ein Leser kann mehrere Artikel lesen und reviewen
+*** ARTICLE 1 --- * REVIEW * --- 1 READER
+
+* Die Entities sind sehr ausführlich gestaltet icon:thumbs-up[]
+
+== Dokumentation
+
+.Die Beschreibung im README.md ist mangelhaft
+----
+Tageszeitung ist ein Rest-Service, welcher alle Authoren und Artikeln ordnet/speichert.
+Das Projekt enthält 4 Klassen (Author, Article, Reader und Review).
+Durch die Service-Klasse die für alle Requests zuständig ist, können
+wir vom Author, Article und Reader jeweils eine Instanz erstellen und hinzufügen, löschen, updaten und lesen.
+----
+
+== Projektstruktur (Maven)
+
+IMPORTANT: Du musst genau arbeiten: Deine Projektstruktur entspricht nicht dem https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html#introduction-to-the-standard-directory-layout[Maven Standard Directory Layout, window="_blank]
+
+image:a02-andricic-maven.png[]
+
+== Automatisierte Tests
+
+* Deine Tests sind spartanisch (Test der Entites und auch Repositories).
+Damit kann man so ziemlich gar nichts testen.
+** und sie funktionieren nur teilweise
+** Du hättest zB die Methode `public JsonObject asJsonObject()` in der Klasse `Article` testen sollen.
+** Vermutlich hättest Du dann den Fehler im `void AddArticleFromRepository()`-Test vermeiden können
+
+* Methodennamen beginnen mit kleinem Anfangsbuchstaben.
+
+* Man sollte die Objekte direkt vergleichen, nicht nur die String-Repräsentation
+
+.suboptimal
+[source,java]
+----
+a1.getBirthDate().toString().equals("2002-03-17");
+----
+
+
+.besser
+[source,java]
+----
+a1.getBirthDate().equals(LocalDate.of(2002, 03, 17));
+----
+
+* Die Test sollen atomar sein, nicht aggregiert
+
+.So sollte ein Test nicht gestaltet sein, ...
+[source,java]
+----
+void AuthorCreatedProperly() {
+    Author a1 = new Author(1, "Daniel", "Andricic", LocalDate.of(2002, 03, 17));
+    assertThat(a1)
+            .isNotNull();
+
+    boolean createdProperly = a1.getID() == 1
+            && a1.getFirstname().equals("Daniel")
+            && a1.getLastname().equals("Andricic")
+            && a1.getBirthDate().toString().equals("2002-03-17");
+            && a1.getBirthDate().equals(LocalDate.of(2002, 03, 17));
+}
+----
+
+.\...da man in der Fehlermeldung nicht erkennen kann, was nun falsch ist
+image:a02-andricic-unit-test1.png[]
+
+.besser
+[source,java]
+----
+void AuthorCreatedProperly() {
+    Author a1 = new Author(1, "Daniel", "Andricic", LocalDate.of(2002, 03, 17));
+    assertThat(a1)
+            .isNotNull();
+
+    assertThat(a1.getID()).isEqualTo(1L);
+    assertThat(a1.getFirstname()).isEqualTo("Daniel");
+    assertThat(a1.getLastname()).isEqualTo("Andricicx");
+    assertThat(a1.getFullName()).isEqualTo("Daniel Andricic");
+    assertThat(a1.getBirthDate()).isEqualTo(LocalDate.of(2002, 3, 17));
+}
+----
+
+.i.S.v. aussagekräftiger:
+image:a02-andricic-unit-test2.png[]
+
+== Imports
+
+.keine exotischen Libraries verwenden, zB hier bei Swagger
+[source,xml]
+----
+  <dependencies>
+    ...
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.9.2</version>
+    </dependency>
+    ...
+  </dependencies>
+----
+
+* Man sollte vorsichtig sein beim Importieren von (unbekannten) Libraries -> Nebeneffekte
+
+.korrekter Import (https://quarkus.io/guides/openapi-swaggerui#expose-openapi-specifications[Extension Guide, window="_blank"] beachten)
+[source,xml]
+----
+  <dependencies>
+    ...
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
+    ...
+  </dependencies>
+----
+
+* In deinem Fall hast Du beide Imports verwendet.
+* Springfox bietet Libraries vorwiegend für Spring (!) an
+
+* Der LocalDate-XmlAdapter ist sehr gut
+** ev. sollte man ihn speziell testen (mit NULL-Werten)
+** siehe http://www.nesterovsky-bros.com/weblog/2018/01/24/JAXBAndJavatimeTypes.aspx[JAXB and java.time.* types, window="_blank"]
+
+.Berücksichtigung von null zB bei marshal(...)
+[source,java]
+----
+@Override
+public String marshal(LocalDate value) throws Exception {
+    return value == null ? null : value.toString();
+}
+----
+
+* Es fehlen sämtliche Tests für die Endpoints (request.http beinhaltet keine Tests)
+
+|bef(3)
+
+
+
+
+|{counter:katnr}
+|02BK aka M
+a|
+== Datenmodell
+image:a02-bal-cld.png[]
+
+* Schreibweise
+** anstelle von clientID -> clientId
+
+* Benennung
+** anstelle von clientId, nur id,
+** da beim Aufruf
+** `Customer` wäre wahrscheinlich gebräuchlicher als `Client` (zu allgemein)
+** `addOrderToOrderList` ist nicht ok in OrderRepository -> besser: addOrder
+*** Es muss ja nicht unbedingt eine List sein
+*** man gibt keine Implementierungsdetails preis
+*** ist unübersichtlich
+
+* `address` ist vermutlich nicht atomar (ist aber derweil noch ok)
++
+[source,java]
+----
+Client huber = new Client(...);
+sout(huber.id); // <.>
+----
++
+<.> Das Objekt ist sowieso vorangestellt
+
+* https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design#define-one-repository-per-aggregate[Define one repository per aggregate, window="_blank"]
+** Repositories sind nur für "starke" Entitäten zu erstellen (Aggregates im microsoft-Sprech)
+** OrderDetails ist eine schwache Entität (kann alleine nicht existieren)
+** Man implementiert hier auch schon (z.T.) die Business-Logik
+Deine Repos müssen sicherstellen, dass kein OrderItem ohne Order erstellt wird
+oder dass kein Order gelöscht wird, wenn OrderItems vorhanden sind
+
+image:a02-andricic-entities-and-repos.png[]
+
+* icon:thumbs-up[] Die von Dir zurückgegebene Liste ist immutable
+
+[source,java]
+----
+public List<Order> getOrderList() {
+    return Collections.unmodifiableList(orderList);
+}
+----
+
+== Use-Case-Diagram
+
+* Use-Cases im Präsens -> "send out Orders"
+* Die Tests spiegeln keine Use-Cases wider!!!!!!!!!
+
+== Dokumentation (README.md)
+
+* Man könnte auch bestimmte Felder erklären
+** zB totalCosts
+
+== Automatisierte Tests
+
+* Es fehlen Tests der Assoziationen -> werden diese korrekt gesetzt
+* Ein Test der Setter und Getter ist wohl nicht so wichtig.
+* Wichtig wären:
+** Hinzufügen eines Clients
+** Hinzufügen von Produkten
+** Hinzufügen einer Order
+** Hinzufügen von OrderItems (über OrderRepository)
+** Ändern/Löschen/Stornieren entsprechend den Use-Cases (muss nicht vollständig sein)
+
+|bef(3)
+
+
+
+
+
+
+|{counter:katnr}
+|03BB
+a|
+
+== Datenmodell
+
+image:a02-besic-cld.png[]
+
+* Ein Shop kann nur einen Raum mieten - wirklich?
+* Ein Raum kann nur einmal vermietet werden?
+** Zieht der Mieter aus, kann der Raum nicht mehr vermietet werden. icon:thumbs-down[]
+
+== Use-Case-Diagram
+
+[plantuml,a02-besic-ucd,png]
+----
+@startuml
+left to right direction
+:admin:
+:user:
+
+rectangle "Center Manager"{
+admin -- (close Shop)
+admin -- (open new Shop)
+admin -- (switch shopping Room)
+admin -- (extend contract)
+user -- (see shop overview)
+}
+@enduml
+----
+
+* Deine oberen 4 UCs kann man zu einem (oder zwei) UCs zusammenfassen:
+** Vertrag erstellen
+** Vertrag ändern
+
+
+== Automatisierte Tests
+
+* Du musst @QuarkusTest verwenden, sonst funktioniert @Inject nicht
+
+* Wir verwenden assertJ oder jUnit, aber ganz sicher nicht `import org.wildfly.common.Assert;`
+** Es ist sonnenklar, warum Dir bei den Imports kein junit angeboten wurde
++
+.In jUnit gibt es kein Assert ...
+image:a02-besic-import1.png[]
++
+.\... sondern ein Assertion
+image:a02-besic-import2.png[]
+
+* Noch komfortabler und vor allem sprechender wäre die Verwendung von assertJ (`assertThat`)
+
+* Leider testest auch Du nicht die Use-Cases, sondern "nur" technische Details (v.a. getter und setter)
+
+== Imports
+
+.Wie viele JAckson-Implementierungen brauchst du eigentlich?
+[source,xml]
+----
+<dependencies>
+   <dependency>
+     <groupId>com.fasterxml.jackson.datatype</groupId>
+     <artifactId>jackson-datatype-jsr310</artifactId>
+     <version>2.6.5</version>
+   </dependency>
+    ...
+   <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-parameter-names</artifactId>
+   </dependency>
+   <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jdk8</artifactId>
+   </dependency>
+   <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+   </dependency>
+</dependencies>
+----
+
+* Wenn Du schon unbedingt Jackson verwenden möchtest, dann nimm die Quarkus-Implementierung
+
+* Du verwendest jsonb und Jackson - eines von beiden reicht
+
+[source,xml]
+----
+<dependencies>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-jackson</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-resteasy-jackson</artifactId>
+    </dependency>
+    ...
+</dependencies>
+----
+
+
+
+|bef(3)
+
+
+
+
+
+
+|{counter:katnr}
+|04BP
+a|
+n/a
+
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|05BJ
+a|
+
+== Datenmodell Baumschule
+
+[plantuml]
+----
+@startuml
+hide empty methods
+left to right direction
+
+class TreeNurseryEntity {
+-t_id : String
+ -name : String
+ -address : String
+}
+
+class GardenerEntity {
+ -g_id : String
+ -treeNursery : String
+ -name : String
+ -address : String
+ -insuranceNumber : String
+ -birthDate : LocalDate
+}
+
+class PlantEntity {
+ -p_id : String
+ -treeNursery : String
+ -name : String
+ -type : String
+ -maxHeight : String
+}
+
+class CultivationTypeEntity {
+ -c_id : String
+ -treeNursery : String
+ -type : String
+}
+
+TreeNurseryEntity "1"-->"*" GardenerEntity : has
+TreeNurseryEntity "1"-->"*" PlantEntity : has
+TreeNurseryEntity "1"-->"*" CultivationTypeEntity : has
+
+@enduml
+----
+
+* weiss eigentlich nicht, was du genau machen möchtest (?!)
+* Notation:
+** kein snake-case
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor User as u
+
+package TreeNursery {
+    usecase "View all employees, plants and cultivation types of a tree nursery" as uc1
+    usecase "Add employees to a tree nursery" as uc2
+    usecase "Add cultivation type to a tree nursery" as uc3
+    usecase "Add plant to a tree nursery" as uc4
+    usecase "Delete a tree nursery and all associated employees, plants and cultivation types" as uc5
+}
+
+u --> uc1
+u --> uc2
+u --> uc3
+u --> uc4
+u --> uc5
+@enduml
+----
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+** Beschriftung des Systemrahmens
+** UCs bestehen aus einem Verb und einem Substantiv
+** Es geht um Geschäftsprozesse und nicht irgendwelche techn. Inserts oder Updates
+
+
+|gen(4)
+
+
+
+
+
+
+
+
+
+|{counter:katnr}
+|06BN
+a|
+
+== Datenmodell Kochrezepte
+
+[plantuml,a02-bojer-cld]
+----
+@startuml
+class Recipe {
+    Long recipeId
+    String name
+    String author
+    MealType mealType
+}
+
+enum MealType {
+    STARTER
+    ENTREE
+    DESSERT
+}
+
+class Ingredients {
+    Long ingredientsId
+    String name
+    String description
+    String imageLink
+}
+
+class Instructions {
+    Long instructionId
+    String description
+    int duration
+    String unit
+}
+
+class Menu {
+    Recipe starter
+    Recipe entree
+    Recipe dessert
+}
+
+class RecipeIngredients {
+    int amount
+    String unit
+}
+
+Recipe "*" - "*" Ingredients : has
+(Recipe, Ingredients) .. RecipeIngredients
+
+
+Recipe "1" -up- "*" Instructions : has
+Menu  -right->  Recipe
+Menu  -right->  Recipe
+Menu  -right->  Recipe
+Recipe -down- MealType
+@enduml
+----
+
+* Datenmodell im Großen und Ganzen korrekt
+* Der Detaillierungsgrad des Datenmodells bringt eigentlich nichts,
+außer man möchte die Kalorien/Joule der einzelnen Speisen berechnen.
+* Für die Klasse RecipeIngedients braucht man kein Repository
+
+
+== Use-Case-Diagram
+
+[plantuml,a02-bojer-ucd]
+----
+left to right direction
+Rectangle Recipe {
+usecase "display all ingredients, instructions and basic information about a recipe" as UC1
+usecase "add instructions to a recipe" as UC2
+usecase "add ingredients to a recipe" as UC3
+usecase "delete a recipe with all their ingredients and instructions" as UC4
+usecase "display a menu that contains a starter, entree and dessert recipe" as UC5
+usecase "display basic information about an ingredient" as UC6
+}
+user ---> UC1
+user --> UC2
+user -> UC3
+user -> UC4
+user --> UC5
+user ---> UC6
+----
+
+== Dokumentation
+
+* images in README.md
+** derzeit: `![class-diagram](https://github.com/2021-4ahif-nvs/assignment02-cdi-bojernico/blob/master/asciidoc/images/cld.png?raw=true)`
+** besser: `![class-diagram](asciidoc/images/cld.png?raw=true)`
+** Dann sieht man die Images auch in der IDE (intellij)
+
+== Umfang des Projekts
+
+* JSON-Datei mit Kochrezepten
+* mehrere .http-Dateien
+
+== Automatisierte Tests
+
+* Die Packages der Tests sollen denen der getesteten Klassen entsprechen
+** Damit auf package-scoped Elemente zugegriffen werden kann
+* Bei den Tests sind die Use-Cases zu prüfen.
+
+== Programmierung
+
+* Gibt es einen Grund, warum Du keine Exceptions verwendest?
+
+|gut(2)
+
+
+
+
+
+
+
+|{counter:katnr}
+|07EB
+a|
+
+=== Datenmodell
+[plantuml,a02-ecker-cld]
+----
+class Animal {
+    -id: Long
+    -species : String
+    -name: String
+    -gender: String
+    -birthDate: LocalDate
+    -stabled: boolean
+}
+
+class Stable {
+    -id: Long
+    -animals: List<Animal>
+}
+
+class HarvestGood {
+    -name: String
+    -isFeed: boolean
+    -quantity: Integer
+}
+
+Stable "*" <-left- "1" Animal : has
+----
+
+* Dein CLD zeigt eine gerichtete Assoziation von Animal zu Stable.
+** Tatsächlich verweist aber Stable zu Animal (in Form einer List)
+* Der Sinn Deines Datenmodells ist mir derzeit noch nicht zugänglich
+
+=== Automatisierte Tests
+
+* Nicht alle Tests in einem package - package sollte korrespondierend zu den getesten Klassen sein
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|08EM
+a|
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+left to right direction
+Class Customer {
+    id: Long
+    name: String
+    street: String
+    zipCode: int
+    city: String
+    birthday: LocalDate
+}
+
+Class Product {
+    eanCode: Long
+    name: String
+    description: String
+    price: double
+    quantity: int
+}
+
+Class InvoiceLine {
+    product: Product
+    quantity: int
+}
+
+Class Invoice {
+    id: Long
+    invoiceLines: List<InvoiceLine>
+    purchaseDate: LocalDate
+    customer: Customer
+}
+
+Invoice "*" --> "1" Customer : buys <
+Product "*" -- "*" Invoice : is bought >
+(Product, Invoice) .. InvoiceLine
+
+@enduml
+----
+
+* InvoiceLine (besser InvoiceItem)
+** hat keine Verbindung zu Invoice (auch wenn Invoice eine Verbindung hat, ist das problematisch)
+** es hat keinen Preis. Bei einer Preiserhöhung würden rückwirkend die Umsätze scheinbar steigen
+
+
+* Product
+** Welchen Key nimmst Du, wenn es für das Produkt keinen EAN-Code gibt?
+
+
+== Use-Case
+
+[plantuml]
+----
+@startuml
+left to right direction
+rectangle {
+    usecase "register new customer" as register
+    usecase "buy product" as buy
+    usecase "get customer statistic" as statistic
+    usecase "add new products to inventory" as newProducts
+}
+Customer --> buy
+Employee --> register
+Employee --> statistic
+Employee --> newProducts
+@enduml
+----
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+** Beschriftung des Systemrahmens
+
+* welche Customer statistic
+
+
+== Documentation
+
+* kein CLD und UCD im README.md
+
+
+
+|gut(2)
+
+
+
+
+
+
+
+|{counter:katnr}
+|09GL
+a|
+leeres Repo
+
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|10HL
+a|
+
+== Datenmodell
+
+.Was soll das? Ein Klassendiagramm mit Krähenfußnotation?
+image:a02_hain_cld.png[]
+
+== UCD
+
+* kein UCD vorhanden
+
+== Dokumentation
+
+* keine Doku im README.md
+
+== Programmierung
+
+* bei Entitäten nur generierte MEthoden
+* ansonsten kein Sinn erkennbar
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|11HN
+a|
+
+* eventmanager
+
+== CLass-Diagram
+
+[plantuml]
+----
+@startuml
+Client "1..*" - "1..*" Event : sponsors >
+Event "1" - "1..*" Staff : < works for
+
+class Client {
+-id : int
+-userName : String
+-email : String
+-budget : int
+}
+
+class Event {
+-title : String
+-managerId : int
+}
+
+class Staff {
+-id : int
+-name : String
+}
+@enduml
+----
+
+* welchen Zeichensatz verwendest Du? jedenfalls nicht UTF-8
+* Welches Problem möchtest Du lösen?
+** budget in client - das kann nicht sein
+** event hat kein Datum (?)
+* Bitte um Rücksprache in Discord
+
+== UCD
+
+[plantuml]
+----
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor eventManager
+actor staff
+actor client
+
+rectangle event {
+  (login) -- eventManager
+  (logout) -- eventManager
+  (hire staff) <-- eventManager
+  (budget) -- staff : manage
+  (check) .> (login) : extends
+  client -- (userName)
+  client -- (eMail)
+  (userName) -- (login)
+  (eMail) -- (login)
+  client -- (logout)
+  client -- (budget) : set
+}
+@enduml
+----
+
+* Das sind keine Use-Cases
+* UC bestehen aus Verb und Substantiv
+** Was zB soll ein use case "budget" sein,
+** oder ein UC "logout"?
+* nur wenige UCs -> GEschäftsprozesse, nicht technische Funktionen
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|12HT
+a|
+
+= Datenmodell Reisebüro
+
+[plantuml]
+----
+@startuml
+class Employee {
+    int: employeeId
+    int: departmentId
+    String: firstName
+    String: lastName
+    LocalDate: hireDate
+    getEmployeeId()
+    getDepartmentId()
+    getFirstName()
+    getLastName()
+    getHireDate()
+    toString()
+}
+
+class Department {
+    int: departmentId
+    String: departmentName
+    getDepartmentId()
+    getDepartmentName()
+    toString()
+}
+
+class Customer {
+    int customerId
+    int employeeId;
+    String firstName
+    String lastName
+    getCustomerId()
+    getEmployeeId()
+    getFirstName()
+    getLastName()
+    toString()
+}
+
+Employee <- Department : "1"has"1..*"
+Customer <- Employee : "0..*"advises"0..*"
+@enduml
+----
+
+* Diese CLD ist komplett falsch
+* 3 Stammdatentabellen sind nebeneinder angeordnet
+** Employee verweist auf Customer (Pfeil), hat aber kein entsprechendes Attribut
+* Du musst Dir Deinen Anwendungszweck überlegen, diesen dokumentieren und anschließend modellieren
+** zB Verkauf von Reisen
+** Department scheint mir sinnlos. Die meisten Reisebüros sind so klein, die haben keine Abteilungen
+
+* Notation
+** <attribute>: <data type>
+
+* getter und setter in einem CLD tragen nicht zur Übersichtlichkeit bei
+
+== UCD
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor "Customer" as customer
+actor "HR" as hr
+
+rectangle "Travel Agency" {
+    usecase "get advice from agency employee" as ucAdvice
+    usecase "hire employee" as ucHire
+    usecase "fire employee" as ucFire
+}
+customer --> ucAdvice
+hr --> ucHire
+hr --> ucFire
+@enduml
+----
+
+* Wichtig sind die UCs, mit denen man "Geld verdient"
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+** Beschriftung des Systemrahmens
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|13ID
+a|
+
+== Datenmodell Music-Label
+
+[plantuml]
+----
+@startuml
+Artist "1"-right-"*" Song : produziert/singt
+Artist "*"-left-"1" Label : unter vertrag
+
+
+class Artist {
+String artistName
+Label label
+
+}
+
+class Label {
+String labelName
+String labelOwners
+}
+
+class Song {
+String songname
+Artist artistName
+
+}
+@enduml
+----
+
+* Das CLD ist komplett falsch
+* Ein Artist (ev. auch Band) singt Lieder (Song), die auf Schallplatten (Record) released werden.
+* oder es gibt keine Schallplatten/CDs mehr, dann könnte man Vertriebskanäle (youtube,netflix, Radiostationen,...) modellieren und die Einnahmen dieser
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor Admin
+actor User
+rectangle "Record Label Manager"{
+  Admin -- (establish Label)
+  Admin -- (dissolve Label)
+  Admin -- (produce new song)
+  Admin -- (sign new artist)
+  User -- (see artists)
+  User -- (see songs)
+}
+@enduml
+----
+
+* gar nicht so schlecht. Muss man sich im Detail ansehen
+
+
+
+|gen(4)
+
+
+
+
+
+
+
+|{counter:katnr}
+|14KJ
+a|
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+skinparam linetype ortho
+
+Entity Customer {
+    c_id : Long
+    --
+    c_firstname : String
+    c_lastname : String
+    c_isPrivat : Boolean
+}
+
+Entity Contract {
+    co_id : Long
+    --
+    co_c_id : Long
+    co_p_id : Long
+    co_start_date : LocalDate
+    co_end_date : LocalDate
+    co_pay_date : LocalDate
+}
+
+Entity Location {
+    l_id : Long
+    --
+    l_name : String
+    l_zipcode : String
+}
+
+Entity Parkingspot {
+    p_id : Long
+    --
+    p_l_id : Long
+    p_type : String
+    p_price_per_day : Double
+    p_position : int
+}
+
+Location "1" -- "*" Parkingspot : "contains"
+Customer "1" -- "*" Contract : " has"
+Contract "*" -- "1" Parkingspot : "contains"
+@enduml
+----
+
+* Gefragt war eigentlich ein Klassendiagramm, ERD ist aber durchaus ok.
+* ERD sollte aber korrekt sein:
+** Long -> NUMBER ev. INT (Long gibt es nicht in SQL, denke ich)
+** String -> VARCHAR
+** Double -> NUMBER oder FLOAT
+* Vom Inhalt her ist es
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+skinparam actorStyle awesome
+
+"Customer" as c
+(Rent a parkingspot) as rent
+"Admin" as a
+(Add location) as al
+(Add parkingspot to location) as apl
+c --> rent
+a --> al
+a --> apl
+@enduml
+----
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+** Es fehlt der komplette Systemrahmen
+* Ein möglicher wichtiger UC wäre wohl eine Auflistung freier Parkplätze
+
+== Documentation
+
+* README.md ist mangelhaft
+
+
+|bef(3)
+
+
+
+
+
+
+
+|{counter:katnr}
+|15KV
+a|
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+enum SkiType {
+  SLALOM,
+    GRAND_SLALOM,
+    SUPERG,
+    FREESTYLE,
+    TOUREN
+}
+
+class Ski {
+    long id
+    String brand
+    SkiType type
+    int length
+    int year
+}
+
+class Customer {
+    long id
+    String firstName
+    String lastName
+}
+
+class Rental {
+    Ski ski
+    Customer customer
+    LocalDate startDate
+    LocalDate endDate
+    double price
+}
+
+Rental "*"-> "1" Customer : rents <
+Ski "1" <- "*" Rental : is rented >
+Ski -- SkiType : > has a
+
+hide Ski methods
+hide SkiType methods
+hide Customer methods
+hide Rental methods
+@enduml
+----
+
+* Eigentlich inhaltlich ziemlich gut
+** Die Rückgabe sollte vermerkt werden
+
+
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+left to right direction
+skinparam linetype ortho
+actor Customer
+rectangle "Ski Rental" {
+  usecase "Get Ski Assortment" as UC1
+  usecase "Rent Ski" as UC2
+  usecase "Get Rentals" as UC3
+}
+
+Customer --> UC1
+Customer --> UC2
+Customer --> UC3
+@enduml
+----
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+
+== Documentation
+
+* README.md ist minimal, aber man kennt sich aus, was das Problem ist.
+
+
+
+
+
+|gut(2)
+
+
+
+
+
+
+
+|{counter:katnr}
+|16ÖMB
+a|
+
+* Dein Projekt befindet sich nicht im Root des Repos
+
+== Datenmodell
+
+[plantuml,a02-oezdogan-cld,png]
+----
+@startuml
+class SportEquipment  {
+  String name
+  String brand
+  void methods()
+}
+
+class Employee {
+   int id
+   String name
+   double salary
+}
+
+class Customer {
+   int id
+   String name
+   Date registeredDate
+}
+
+Employee "1 .. * " -- "1 .. *" SportEquipment : > supervise
+SportEquipment"1 ..*" -- "1 .. 0"  Customer : < uses
+@enduml
+----
+
+* Dein Datenmodell passt überhaupt nicht
+* Es ist eine Ansammlung von Stammdaten-Klassen, es fehlen Klassen für die Bewegungsdaten
+** zB Geräte und Erstellung von Trainingsprogrammen
+* Dein UCD und Dein CLD passen überhaupt nicht zusammen, dh die Use-Cases können vom Datenmodell nicht durchgeführt werden.
+
+=== UCD
+
+[plantuml,a02-oezdogan-ucd,png]
+----
+left to right direction
+actor Customer as g
+package Professional {
+  actor Employee as e
+}
+package Gym {
+  usecase "Use Sportequipment" as UC1
+  usecase "train with Personalcoach" as UC2
+  usecase "Drink" as UC3
+  usecase "Take Shower" as UC4
+  usecase "Review" as UC5
+}
+e --> UC5
+g --> UC1
+g --> UC2
+g --> UC3
+g --> UC4
+----
+
+* Was soll das Package "Professional"?
+* Beschriftung des Systemrahmens !!!!
+* Du hast UC's "Drink" und "Take Shower". Hast Du eine Brause in Dein System eingebaut?
+
+== Automatisierte Tests
+
+* Deine Tests sollen sich im selben Package wie das Testobjekt befinden.
+
+|gen-(4-)
+
+
+
+
+
+
+
+|{counter:katnr}
+|17PMa
+a|
+
+== Datenmodell
+
+.Das reicht wohl nicht - ein eigenes CLD war verlangt
+image:a02-plakolb-cld.png[]
+
+.Das tatsächliche CLD
+image::a02-plakolb-cld-generiert.png[]
+
+* Es fehlen die Assoziatonen
+* Die Entitäten sind isoliert und haben einerlei Bezug zueinander.
+
+== User-Stories
+
+* fehlen
+
+== Dokumentation
+
+* keine Dokumentation in README.md
+
+
+== Automatisierte Tests
+
+[source,java]
+----
+@Test
+void getCompanyIdTest() {
+    Long expected = 1L;
+    assertThat(expected).isEqualTo(company.getId());
+}
+----
+
+== Fazit
+
+* Es sind wesentliche Teile der Angabe nicht erfüllt.
+* Die idente Widerholung von Entitäten und Tests reicht nicht.
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|18PMo
+a|
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+class Car{
+    -brand :String
+    -model :String
+    -horsepower :int
+    -constructionYear :int
+    -color :String
+}
+class Calculation{
+    -customerId :Long
+    -carId :Long
+    -amount :double
+    -purchaseDate :String
+}
+class Customer{
+    -firstname :String
+    -lastname :String
+    -eMail :String
+    -address :String
+}
+Calculation "1"-left->"1" Car :is on >
+Calculation "*"-"1" Customer :gets <
+@enduml
+----
+
+* Was soll das sein? Ein Klassendiagramm?
+* Date als String, wirklich?
+* `Calculation` bedeutet aber nicht Rechnung i.S.v. Ausgangsrechnung!
+* Eine Calculation ist auf einem Car?
+
+.korrigiert
+[plantuml]
+----
+@startuml
+class Car{
+    -brand :String
+    -model :String
+    -horsepower :int
+    -constructionYear :int
+    -color :String
+}
+class Invoice{
+    -customer :Customer
+    -car :Car
+    -amount :BigDecimal
+    -purchaseDate :LocalDate
+}
+class Customer{
+    -firstname :String
+    -lastname :String
+    -eMail :String
+    -address :String
+}
+Invoice "1"-left->"1" Car :is on >
+Invoice "*"->"1" Customer :gets <
+@enduml
+----
+
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor "Customer" as u
+rectangle car-dealership {
+  usecase "buy car" as UC1
+  usecase "show Customer purchase history" as UC2
+  usecase "view assortment" as UC3
+}
+u --> UC1
+u --> UC2
+u --> UC3
+@enduml
+----
+
+* Grundsätzlich ok
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+
+== Documentation
+
+README.md ist spartanisch, aber durchaus aussagekräftig
+
+|gen(4)
+
+
+
+
+
+
+
+|{counter:katnr}
+|19RY
+a|leeres Projekt abgegeben
+
+
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|20RR
+a|
+
+.Man kann das Projekttitel auch ändern
+image:rajkovaca-project-title.png[]
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+
+class Person{
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String fullName;
+}
+class Restaurant{
+    private Food food;
+    private Person person;
+    private String restaurantName;
+    private String adress;
+    private String waiter;
+    private boolean reserved;
+}
+class Food{
+    private String drink;
+    private String food;
+    private double cost;
+    private int foodID;
+}
+
+Restaurant "1" -l-> "*" Person
+Restaurant "*" -r-> "1" Food
+@enduml
+----
+
+* Diese CLD kann nicht funktionieren:
+** Das ist einen Aneinanderreihung von Stammdaten-Tabellen
+** Besser wäre die Verwendung von Bewegungsdaten
+* Die Table Restaurant beinhaltet nur eine Zeile
+
+=== Vorschlag
+
+[plantuml]
+----
+@startuml
+class Table
+class Order
+class Product
+class Waiter
+class Reservation
+
+Table -- Order
+Order -- Product
+Order -- Waiter
+Table -- Reservation
+@enduml
+----
+
+* Bei Restaurants wird selten eine Tabelle der Kunden geführt.
+Es werden eher der Namen und die TelNr der reservierenden Person in der Reservierung vermerkt.
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+@startuml
+
+left to right direction
+
+:Person:
+:Restaurant:
+
+rectangle RestaurantService{
+    Restaurant -- (characteristics of the type of the ordered food)
+    Restaurant -- (look after customers)
+    Restaurant -- (reservations)
+    Person -- (reserve in a restaurant)
+    Person -- (ordered food)
+
+}
+@enduml
+----
+
+* Was bedeutet der UC "look after customers"? Kann man in Deinem System nachschauen, wie es den Gästen geht?
+* Unter Product versteht man Dishes und Beverages.
+
+== Documentation
+
+README.md ist kurz, aber das Problem ist ausreichend beschrieben
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|21RF
+a|
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+class Jewelery {
+    String title
+    int year
+    double price
+    boolean isNew
+    long serialNo
+}
+
+class Customer {
+    long id
+    String firstName
+    String lastName
+    LocalDate birthDate
+}
+
+class Bill {
+   long jewelerySerialNo
+   long customerId
+   double price
+   LocalDate billDate
+}
+
+Jewelery"*"<- "1" Customer : buys <
+Customer "1" -up-> "*" Bill: gets >
+Jewelery "1" <- "1" Bill : has <
+
+
+hide Jewelery methods
+hide Bill methods
+hide Customer methods
+@enduml
+----
+
+* Die Bill (besser Invoice) ist eigentlich schon die assoziative Tabelle der *:* - Relation zwischen Jewelery (besser Produkt) und Customer
+* Deine Invoice funktioniert nicht. Es fehlt die Rechnungsposition, damit man auf einer Rechnung mehrere Produkte kaufen kann.
+* Jewellery
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor Customer
+
+package Jeweler {
+  usecase "Buys Jewelery" as UC1
+  usecase "Gets Bill" as UC2
+  usecase "Display all available jeweleries" as UC3
+
+Customer --> UC1
+Customer --> UC2
+Customer --> UC3
+@enduml
+----
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+** Beschriftung des Systemrahmens
+* "Gets Bill" ist kein sol toller UC, oder?
+
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|22SE
+a|
+
+== Datenmodell
+
+[plantuml,a02-sljivic-cld,png]
+----
+@startuml
+hide empty methods
+skinparam linetype ortho
+enum RideType {
+    SCHOOLBUS
+    DAILYBUS
+}
+
+
+class BusSchedule {
+    LocalDateTime arrivalTime
+    LocalDateTime leavingTime
+}
+
+
+class Bus{
+    Long id
+}
+
+class DriverSchedule{
+    LocalDateTime startTime
+    LocalDateTime endTime
+}
+
+class Driver{
+    String firstName
+    String lastName
+    double salary
+    LocalDate firstDay
+}
+
+class BusStop{
+    String title
+}
+
+BusStop -> BusStop
+BusSchedule "*" -up- "1" BusStop : has
+BusSchedule "*" -left- "*" Bus : belongs to
+(BusSchedule, Bus) . BusAssignment
+Bus "1" -- "*" DriverSchedule : driven by
+DriverSchedule "*" -right- "1" Driver : drives
+BusSchedule "*" -- "1" RideType : is a
+@enduml
+----
+
+* Die Rekursion beim BusStop ist wahrscheinlich nicht ok.
+** Was wäre wenn ein BusStop mehrere nachfolgende BusStops hat
+(zB an einer Kreuzung mehrerer Linien)
+
+* Vielleicht wäre es sinnvoll, nur die Linien und die Abfahrtszeiten zu modellieren
+und nicht den Dienstplan der Fahrer
+
+== UCD
+
+image::a02-sljivic-ucd.png[]
+
+* Glaubst Du wirklich, der Gast erbt sämtliche Rechte des Admins? - Hoffentlich nicht
+
+
+
+== Automatisierte Tests
+
+* Warum hat Dein Test-Verzeichnis keinen Java-Ordner?
+** Darum erkennt intellij die Testklassen nicht
+** Bitte das https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[Maven Standard Layout einhalten]
+* Du solltest bei den Tests auf die User-Stories Bezug nehmen
+** Getter und Setter sind eigentlich sinnlos zu testen, außer es ist irgendeine zusätzliche Logik enthalten
+** equals() und hashCode() schon. Sollte dann dokumentiert werden
+*** Was sind idente Objekte (welche Attribute werden dabei berücksichtigt)
+
+== Programmierung
+
+.Warum hast Du einen Rückgabewert, wenn Du ihn nie benutzt?
+image:a02-sljivic-return-never-used.png[]
+
+.wenn möglich, final wählen
+image:a02-sljivic-final.png[]
+
+|gut(2)
+
+
+
+
+
+
+
+|{counter:katnr}
+|23SB
+a|
+
+== Datenmodell
+
+.Notation falsch (das ist ja kein Programmcode, sondern ein CLD)
+[plantuml,a02-spasenovic-cld,png]
+----
+@startuml
+class Car{
+    private String name;
+    private int ps;
+    private int cost;
+    private String model;
+    private String licensePlate;
+}
+class Rental{
+    private Car car;
+    private Renter renter;
+    private Date startDate;
+    private Date endDate;
+}
+class Renter{
+    private int id;
+    private String name;
+}
+
+Car "1"<-l-"*" Rental : is rented >
+Rental "*"-r->"1" Renter : rents <
+@enduml
+----
+
+.teilweise korrigiert
+[plantuml,a02-spasenovic-cld-korr,png]
+----
+@startuml
+class Car{
+    - name: String
+    - ps: double
+    - cost: double
+    - model String
+    - licensePlate String
+}
+class Rental{
+    - car: Car
+    - renter: Renter
+    - startDate: LocalDate
+    - endDate: LocalDate
+}
+class Renter{
+    - id: Long
+    - name: String
+}
+
+Car "1"<-l-"*" Rental : is rented >
+Rental "*"-r->"1" Renter : rents <
+@enduml
+----
+
+* Die Kosten sind eher kein Integer.
+* Wir verwenden kein `Date`, sondern `LocalDate`.
+* id ist (fast) immer Datentyp Long. Id hier noch nicht notwendig.
+* Da es hier keine Datenbank gibt, ist eine Id in den Entities nicht notwendig.
+** Notwendig wäre aber eine equals()-Methode und eine hashCode()-Methode (es gibt ja keinen Primärschüssel)
+* Wieso heisst Dein package `boundaryTest` und nicht `boundary`?
+
+* Ganz böse - Du verletzt das Prinzip der Kapselung
++
+[source,java]
+----
+public List<Car> getCars() {
+        return this.cars; // <.>
+    }
+----
+<.> Man hat Zugriff auf die Liste und kann alles verändern.
++
+[source,java]
+----
+public List<Car> getCars() {
+        return Collections.unmodifiableList(cars); // <.>
+    }
+----
+<.> Nun ist die Liste immutable
+
+== Automatisierte Tests
+
+* Es fehlen Modultests (nur Entities)
+
+|gen(4)
+
+
+
+
+
+
+
+|{counter:katnr}
+|24SP
+a|
+
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+class Dancer{
+  String name
+  String address
+  int age
+}
+
+class Group{
+   String groupName
+}
+
+class Meeting{
+    String day
+}
+
+Dancer "*" -- "1" Group
+Group "1" -- "1...*" Meeting
+
+
+hide members
+show Dancer fields
+show Group fields
+show Meeting fields
+@enduml
+----
+
+* Das ist nur ein Klassendiagrammfragment
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor Dancer as dancer
+
+package DanceSchool {
+  usecase "dance" as UC1
+  usecase "appear" as UC2
+  usecase "train" as UC3
+
+}
+
+dancer --> UC1
+dancer --> UC2
+dancer --> UC3
+@enduml
+----
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+** Beschriftung des Systemrahmens
+** UCs sind keine UCs (Verb + Substantiv). So haben Deine UCs keine Aussagekraft
+
+
+== Documentation
+
+Gesamtüberblich beim README.md fehlt
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|25TF
+a|
+
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+class Book{
+    id: int
+    bookName: String
+    publisher: String
+    author: String
+}
+
+class Author{
+    authorFirstName: String
+    authorLastName: String
+    noOfBooks: int
+    Nationality: String
+}
+
+class Publisher{
+    publisherName: String
+    publishedBooks: List<Book>
+}
+
+Book <-- Author : has 1 >
+Book <- Publisher :  has 1 >
+@enduml
+----
+
+* id -> Long (kein Primitivdatentyp)
+* Mache Klassen haben eine Id, ander nicht -> das ist nicht konsistent
+* Die Notation ist falsch: Was bedeutet "has 1"?
+
+=== korrigiert
+
+* Bei deinem CLD kann ein Buch nur einen Auto haben (das ist nicht sehr realistisch)
+* Die Nationalität als Sting ist wohl sehr nachteilig.
+** Besser als enum
+** oder als Lookup-Table -> https://github.com/Dinuks/country-nationality-list
+* Die noOfBooks wird nicht als Zahl eingetragfen, sondern bei Bedarf aus den publizierten Büchern berechnet
+* Eigentlich ist diese Korrektur sinnlos, da Du das Problem nicht ordentlich spezifiziert hast.
+
+[plantuml]
+----
+@startuml
+class Book{
+    -id: Long
+    -bookName: String
+    -publisher: Publisher
+    -author: Author
+}
+
+class Author{
+    -authorFirstName: String
+    -authorLastName: String
+    -nationality: Nationality
+    -int publishedBooks()
+}
+
+class Publisher{
+    -publisherName: String
+    -publishedBooks: List<Book>
+}
+
+Book <-- Author : has 1 >
+Book "*" <-- "1" Publisher :  publishes >
+Book "*" --> "1" Publisher :  has >
+
+@enduml
+----
+
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor "Librarian" as lib
+actor "Customer" as cust
+rectangle Library {
+  usecase "Add new Book" as UC1
+  usecase "Rent Book" as UC2
+  usecase "Register new Author" as UC3
+}
+lib --> UC1
+cust --> UC2
+lib --> UC3
+@enduml
+----
+
+* Der UC "Rent Book" ist im Datenmodell nicht abgebildet
+
+== Documentation
+
+* Aus deinem README-File geht nicht hervor, was Du für ein Problem lösen möchtest
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|26TP
+a|n/a
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+class Graveyard{
+    id: int
+    Name: String
+    Address: String
+}
+
+class Gravestone{
+    id: int
+    dateofdeath: LocalDate
+    Name: String
+}
+
+class Employee{
+    id: int
+    firstname: String
+    lastname: String
+    address: String
+}
+
+Graveyard <- Gravestone : has 1 <
+Graveyard <- Employee : has 1 <
+@enduml
+----
+
+* wieviele Grabsteine ein Grab hat, spielt für den Friedhofbetreiber wohl keine Rolle
+* Kunden (Customer) können für eine gewisse Dauer entweder Gräber oder Urnengräber mieten
+* Diese Grabstellen können Bereichen zugeordnet werden, in den Gräber nur einer Religionsgemeinschaft zu finden sind
+* Es muss ersichtlich sein, welche Grabstellen sind verfügbar und welche Grabstellen sicn noch für wie lange vermietet.
+
+== Use-Case-Diagram
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor "Graveyard Manager" as gr
+rectangle Graveyard {
+  usecase "Add new Employee" as UC1
+  usecase "Add new Gravestone" as UC2
+  usecase "Dispose Employee" as UC3
+}
+gr --> UC1
+gr --> UC2
+gr --> UC3
+@enduml
+----
+
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+
+
+== Documentation
+
+In der README.md ist nicht ersichtlich, welches Problem zu lösen ist
+
+
+
+
+
+
+|ngd(5)
+
+
+
+
+
+
+
+|{counter:katnr}
+|27WM
+a|
+
+== Datenmodell
+
+[plantuml]
+----
+@startuml
+left to right direction
+skinparam linetype ortho
+
+class Employee {
+    -firstName: String
+    -lastName: String
+}
+
+class Call {
+    -employeeId: Long
+    -start: LocalDateTime
+    -end: LocalDateTime
+    -callerId: String
+    -notes: String
+}
+
+class Caller {
+    -callerId: String
+    -firstName: String
+    -lastName: String
+}
+
+Caller "1" -- "*" Call : < incoming from
+Employee "1" --"*" Call : answers >
+@enduml
+----
+
+* Was soll das für ein Call-Center sein?
+* Ein Call-Center hat Kunden
+** Für diese Kunden werden zu gewissen Themen für eine gewisse Dauer Anfragen abgewickelt
+** Es geht wahrscheinlich nicht einmal so ums tracken der calls
+* Auch das vorhandene minimale CLD stimmt nicht
+** Du speicherst die Anrufer
+*** Aber diese sind nicht identifizierbar
+*** Wenn drei Franz Mayr anrufen, würden diese bei Die dieselbe Person sein
+*** Das ist ganz schlecht, das ist nicht nur Scheingenauigkeit, sondern spiegelt eine falsche Realität wider.
+
+
+[plantuml]
+----
+@startuml
+left to right direction
+actor "Employee" as emp
+rectangle "Callcenter" {
+  usecase "Identify caller via caller ID" as u1
+  usecase "Track incoming calls" as u2
+  usecase "See call duration" as u3
+}
+emp -> u1
+emp -> u2
+emp -> u3
+@enduml
+----
+
+* Auch eine Telefonnummer ist kein eindeutiges Identifikationskriterium
+* "See call duration" - kein besonders ansprechender Geschäftsprozess
+* falsche Notation
+** Assoziationen haben keine Pfeilspitzen
+
+
+|ngd(5)
+
+
+|===
+
+.Kriterien
+* Grundlegende Informationen sind in der README.md anzuführen
+** Thema des Projekts
+** Umfang des Projekts
+*** Sind Tests enthalten?
+** Wie startet man das Projekt
+* Das Projekt muss lauffähig sein (am Besten in ein neues Verzeichnis clonen und ausprobieren)
+* Testdaten sind sehr hilfreich
+* CRUD muss vorhanden sein
+
+.Allgemeine Bemerkungen
+* Was muss ich testen?
+** Meine Use-Cases / User-Stories (bei den System-Tests -> REST-Endpoints)
+** Meine Abhängigkeiten (bei den Repository-Tests)
+
+* Was ist nicht so wichtig zu testen?
+** Die Getter und Setter, die eh keine Logik beinhalten.
+
+
+* Was ist bei Datenmodellen zu beachten
+** Zuerst soll man sich eine (realistisches) Problem überlegen
+** Dann formuliert man die Use-Cases
+*** Die UCs sollen nicht technisch sein, sondern aus der Sicht des *Benutzers* und nicht des Progrmmierers
+*** Wie kann das zu erstellende System dem Benutzer bei seiner (täglichen) Arbeit helfen
+** Wenn man aufgrund der UCs weiß, was das Datenmodell können soll, kann man dieses modellieren
+*** Ein Klassendiagramm benötigt eigentlich keine Surrogate (künstliche Id), die kommen ert beim relationalen Modell dazu
+
+
+////
+* Da es hier keine Datenbank gibt, ist eine Id in den Entities nicht notwendig.
+** Notwendig wäre aber eine equals()-Methode und eine hashCode()-Methode (es gibt ja keinen Primärschüssel)
+* Arbeit mit Optionals
+** isNull()
+* die Angabe ist keine Empfehlung / Vorschlag sondern bindend
+** Benennung des Projekts
+** Commits
+** ...
+* Das Java-Projekt muss direkt im Repo-Ordner sein, nicht in einem Unterverzeichnis
+* Bezeichner in englisch (ist so üblich)
+* ist eine List wirklich die geeignete Collection für das Repository
+* der erste url einer RESTful-API sollte `/api` sein (ebenfalls sehr oft üblich)
+* in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case
+* Im README-md file könnte man grob die inhaltliche Zielsetzung umreißen.
+* Repositories: Warum und Aufbau
+** Kritische Anmerkungen zum Repository Pattern bei Verwendung eines ORM
+** Was ist ein Aggregate bzw.
+Root Aggregate (Starke Entität))
+** https://thorben-janssen.com/implementing-the-repository-pattern-with-jpa-and-hibernate/[Implementing the Repository pattern with JPA and Hibernate, window="_blank"]
+* Verwendung von Streams (anstelle von Schleifen)
+////
+
+//====
+
+
+
+
+
+
+

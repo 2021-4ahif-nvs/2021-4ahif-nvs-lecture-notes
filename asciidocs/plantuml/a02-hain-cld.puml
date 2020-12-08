@@ -1,0 +1,34 @@
+@startuml
+class Animal {
+    a_id : number
+    a_name : varchar
+    a_birthdate : date
+    a_species : varchar
+    a_e_id : number
+}
+
+class Enclosure {
+    e_id : number
+    --
+    e_name : varchar
+}
+
+class Food {
+    f_id : number
+    --
+    f_name : varchar
+}
+
+class FoodRation {
+    fr_id : number
+    --
+    fr_f_id : number
+    fr_a_id : number
+    fr_amount : number
+    fr_date : date
+}
+
+Enclosure ||.up.|{ Animal
+Animal ||.right.|{ FoodRation
+FoodRation }|.down.|| Food
+@enduml

@@ -1,0 +1,170 @@
+= Assignment XX Grading
+Thomas Stütz
+1.0.0, 2020-xx-xx: ...
+ifndef::imagesdir[:imagesdir: images]
+//:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
+:sourcedir: ../src/main/java
+:icons: font
+:sectnums:    // Nummerierung der Überschriften / section numbering
+:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+//icon:file-text-o[link=https://raw.githubusercontent.com/htl-leonding-college/asciidoctor-docker-template/master/asciidocs/{docname}.adoc]
+//icon:github-square[link=https://github.com/htl-leonding-college/asciidoctor-docker-template]
+//icon:home[link=https://htl-leonding.github.io/]
+endif::backend-html5[]
+
+// print the toc here (not at the default position)
+//toc::[]
+
+
+
+Download am 2020-mm-dd HH:mm
+
+
+== 01AD
+
+
+
+
+== 02BK aka M
+
+
+
+
+== 03BB
+
+
+
+
+== 04BP
+
+
+
+
+== 05BJ
+
+
+
+
+== 06BN
+
+
+
+
+== 07EB
+
+
+
+
+== 08EM
+
+
+
+
+== 09GL
+
+
+
+
+== 10HL
+
+
+
+
+== 11HN
+
+
+
+
+== 12HT
+
+
+
+
+== 13ID
+
+
+
+
+== 14KJ
+
+
+
+
+== 15KV
+
+
+
+
+== 16ÖMB
+
+
+
+
+== 17PMa
+
+
+
+
+== 18PMo
+
+
+
+
+== 19RY
+
+
+
+
+== 20RR
+
+
+
+
+== 21RF
+
+
+
+
+== 22SE
+
+
+
+
+== 23SB
+
+
+
+
+== 24SP
+
+
+
+
+== 25TF
+
+
+
+
+== 26TP
+
+
+
+
+== 27WM
+
+
+
+
+
+
+
+
+
+
+
+
