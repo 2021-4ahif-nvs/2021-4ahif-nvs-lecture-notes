@@ -194,6 +194,116 @@ public String marshal(LocalDate value) throws Exception {
 
 * Es fehlen sämtliche Tests für die Endpoints (request.http beinhaltet keine Tests)
 
+== Korrigiertes CLD
+
+[plantuml]
+----
+@startuml
+Author  -right- Article : writes >
+Reader -left- Article : reads >
+Article --> Review
+
+
+class Author {
+    long id
+    String firstName
+    String lastName
+    LocalDate birthDate
+
+    public void getFullName()
+    public String toString()
+}
+
+class Review {
+    Reader reviewer
+    Article reviewedArticle
+    int stars
+    LocalDate reviewDate
+}
+
+class Article {
+    long articleID
+    String articleName
+    String content
+    LocalDate releaseDate
+    long authorID
+}
+
+class Reader {
+    long readerID
+    String firstName
+    String lastName
+    String emailAddress
+    LocalDate birthDate
+
+    public int getAge()
+    public String toString()
+}
+@enduml
+----
+
+* gar nicht sauber:
+** falsche Notation <Attributname>: <Datentyp>
+** Beschriftung: innerhalb einer Klasse nicht "articleID" sondern nur id (wird ja eh über das entsprechende Objekt angesprochen)
+** In Review ist eine Assoziation zu Reader eingetragen (reviewer) aber nicht eingezeichnet
+** Zwischen Reader und Review ist eine Assoziation eingezeichnet, es gibt aber keine Felder
+** Zwischen Author und Article ist das eine gerichtete Assoziation, aber nicht eingezeichnet
+** Zwischen Article und Review ist die Richtung der Assoziation *falsch* eingezeichnet
+** Du hast keine Multiplizitäten (?!)
+* das Passwort ist natürlich gehashed
+
+
+[plantuml]
+----
+@startuml
+Author  "1" <-right- "*" Article : writes >
+Reader "1" <-left- "*" Review : reviews >
+Article "1" <-- "*" Review: belongs to <
+
+
+class Author {
+    -id: Long
+    -firstName: String
+    String lastName
+    LocalDate birthDate
+
+    +void getFullName()
+    +String toString()
+}
+
+class Review {
+    -id: Long
+    -reviewer: Reader
+    -article: Article
+    -stars: int
+    -reviewDate: LocalDate
+}
+
+class Article {
+    -id: Long
+    -name: String
+    String content
+    LocalDate releaseDate
+    -author: Author
+}
+
+class Reader {
+    -id: Long
+    String firstName
+    String lastName
+    String emailAddress
+    LocalDate birthDate
+    -password: String
+
+    +int getAge()
+    +String toString()
+}
+@enduml
+----
+
+
+
+
 |bef(3)
 
 
