@@ -651,17 +651,11 @@ https://assertj.github.io/doc
 
 == 2020-11-23
 
-== Übung Miniprojekt JPA
+== Übung Miniprojekt JPA (Assignment 04 - JPA)
 
-* Verwenden Sie die bereits erstellten Entitäten in Ihrem Miniprojekt
-* Achten Sie dabei auf eine korrekte Definition der Beziehungen
-* Erstellen Sie ein UCD mit 3 datenbankbasierten Use-Case (plantuml)
-* Implementieren Sie die geeigneten REST-Resourcen, um diese Use-Cases testen zu können.
-* Achten Sie auf geeignete Commits
-* Benennen Sie die Tabelle und die Spalten entsprechend
-* ....
-
-https://www.objectdb.com/java/jpa/query/named
+* https://htl-leonding-college.github.io/quarkus-lecture-notes/assignment03-jpa.html
+* Invitation for the classroom-repo: https://classroom.github.com/a/ZGz0UUQd
+* Infos for the queries: https://www.objectdb.com/java/jpa/query/named
 
 == 2020-11-26
 
@@ -771,3 +765,34 @@ Person "1" <--- "*" Hobby : übt aus >
 == 2020-11-30
 
 include::assignment02-grading.adoc[]
+
+* SQL
+** gibt in der SELECT - Klausel die gewünschten Spalten an
+** SELECT ename, deptno FROM emp;
+** NativeQuery, NamedNativeQuery
+
+* JP-QL
+** da objektorientiert, werden ganze Objekt zurückgegeben
+** SELECT e from Employee e
+** SELECT e.ename, e.deptno FROM Employee e
+** Query, TypedQuery, NamedQuery
+
+* Problem:
+** Bei aggregierten Daten ist die Rückgabe von Objekten kaum möglich.
+** SELECT COUNT(*) FROM emp GROUP BY deptno;
+
+* Schlüssel (Primary Key)
+** Natürlichen Schlüssel
+** Künstlichen Schlüssel (Surrogat)
+
+== 2020-12-10
+
+=== JPA-Panache
+
+https://www.objectdb.com/java/jpa/query/api
+
+
+=== Assignment 04 - JPA mit Panache
+
+* https://htl-leonding-college.github.io/quarkus-lecture-notes/assignment04-jpa-panache.html
+* Invitation to the classroom repo: https://classroom.github.com/a/HOTLJ1ue
