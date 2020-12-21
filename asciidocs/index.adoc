@@ -654,7 +654,6 @@ https://assertj.github.io/doc
 == Übung Miniprojekt JPA (Assignment 04 - JPA)
 
 * https://htl-leonding-college.github.io/quarkus-lecture-notes/assignment03-jpa.html
-* Invitation for the classroom-repo: https://classroom.github.com/a/ZGz0UUQd
 * Infos for the queries: https://www.objectdb.com/java/jpa/query/named
 
 == 2020-11-26
@@ -795,4 +794,27 @@ https://www.objectdb.com/java/jpa/query/api
 === Assignment 04 - JPA mit Panache
 
 * https://htl-leonding-college.github.io/quarkus-lecture-notes/assignment04-jpa-panache.html
-* Invitation to the classroom repo: https://classroom.github.com/a/HOTLJ1ue
+* Invitation to the classroom repo for assignment 04: https://classroom.github.com/a/HOTLJ1ue
+
+
+== 2020-12-14
+
+=== JPA mit Panache (Demo-Projekt)
+
+https://github.com/htl-leonding-college/smallwind-quarkus[Smallwind Demo]
+
+
+== 2020-12-21
+
+
+
+
+
+
+
+
+
+
+
+
+
