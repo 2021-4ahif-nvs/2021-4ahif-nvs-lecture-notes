@@ -806,7 +806,11 @@ https://github.com/htl-leonding-college/smallwind-quarkus[Smallwind Demo]
 
 == 2020-12-21
 
+Übung Dogschool
 
+* https://classroom.github.com/a/RI_x2aFd[Angabeprojekt am Classroom-Server]
+
+* https://github.com/htl-leonding/dogschool-test-quarkus[testprojekt, window="_blank"]
 
 
 
