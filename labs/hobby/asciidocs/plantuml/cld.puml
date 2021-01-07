@@ -1,0 +1,15 @@
+@startuml
+class Person {
+  name: String
+  hobby: Hobby
+}
+
+class Hobby {
+  description: String
+  List<Person> persons
+}
+
+Hobby "1" <-- "*" Person : führt aus >
+Person "*" <-- "1" Hobby : wird ausgeführt >
+
+@enduml

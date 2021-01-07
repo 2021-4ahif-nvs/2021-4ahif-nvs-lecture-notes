@@ -814,11 +814,126 @@ https://github.com/htl-leonding-college/smallwind-quarkus[Smallwind Demo]
 
 
 
+== 2021-01-07 - Bidirektionale Beziehungen
+
+Begriffe: Multiplizität, Kardinalität, referentielle Integrität, cascading (PERSIST,MERGE,REMOVE,... )
+
+Übung Hobby (live-coding)
+
+=== Persistieren von Klassen in die DB
+
+* in pom.xml die Abhängigkeiten (Libraries) eintragen
+** JPA
+** JDBC-Driver
+
+* Vorbereiten der Klassen
+** @Entity
+** @Id @GeneratedValue
+** Annotationen für Assoziationen eintragen
+
+* Datenbank-JDBC-Url in application.properties eintragen
+
+* Repositories erstellen
+
+
+Übung:
+* Persistieren Sie die Tabellen PErson und Hobby in der Datenbank
+** Hobby: PK String abbr
+** Person: PK Long id
+* Erstellen Sie Tests mit assertJ-DB, um die Korrektheit der Klassen sicherzustellen
+** @QuarkusTest nicht vergessen
+* Tipp: https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/
+
+https://classroom.github.com/a/PoSDAA0u
+
+
+== 2021-01-11
 
 
 
+=== Allgemeine Fehlerbehebungs- bzw Fehlervermeidungsmaßnahmen
+
+==== Feedback beachten
+
+* werden Kommentare zu erstellten Arbeiten zur Verfügung gestellt,
+so ist es wichtig, nicht nur seine eigenen Fehler anzusehen, sondern auch die der anderen
+* sehr oft wiederholen sich Fehler und Versäumnisse in vielen Arbeiten
+
+
+==== Angabe lesen
+
+* Die Angabe hat mehrere Komponenten
+** Angabe.pdf (der traditionelle Angabezettel)
+** Kommentare über Klassen und Methoden
+*** Falls man diese nicht versteht, darf und sollte gefragt werden
+** die automatisierten Tests
+*** hier kann man ersehen, wie die Methoden benutzt werden und was abgeprüft wird (assert)
+
+
+==== Das Datenmodell ist als Erstes zu generieren
+
+* Zuerst soll die Erstellung des Datenmodells funktionieren
+** Entity-Tests durchführen, damit die Entities soweit funktionieren
+** Entities persistenzfähig machen
+** Repositories persistenzfähig machen -> @ApplicationScoped ist bei allen Repos einzutragen
 
 
 
+==== Definierten Ausgangszustand herstellen
 
+wird auch AEG genannt: Ausgeschaltet-Eingeschaltet-Geht
+
+* darunter fällt das manuelle Löschen der Tabellen (solange dieses nicht nicht korrekt ist)
+* das Löschen des target Ordners bei "komischen" Fehlermeldungen zB `java: cannot find symbol`
+** wird der target Ordner nicht gelöscht, können Codedteien vom letzten Kompiliervorgang bestehen bleiben und die Funktionsfähigkeit beeinträchtigen
+** Dies ist besonders bei Tests wichtig, da beim normalen Start mit `mvnw` meist `clean` verwendet wird, wodurch der trget-Ordner gelöscht wird
+*** man könnte beim Aufruf der Tests ebenfalls ein CLEAN eintragen - somit würde der target-Ordner automatisch gelöscht
+
+
+==== DROP TABLE manually
+
+* Solange das Datenmodell noch nicht korrekt ist, ist es angeraten, die Tabellen per DROP manuell zu löschen
+** dh insbesondere Tabellenbezeichnungen sind noch nicht korrekt
+** oder zusätzliche Tabellen wurde automatisch erstellt (zB assoziative Tabellen, weil `mappedBy` fehlt)
+* Grund hierfür ist die *referentielle Integrität*. Diese kann verhindern, dass eine Tabelle mit DROP TABLE (automtisch)
+gelöscht wird, weil eine referntielle Beziehung zwischen diesen Tabellen besteht
+
+==== Code strukturieren
+
+* Zeilenschaltungen verwenden
+* Code einrücken
+
+==== Die Unterstützung der IDE verwenden
+
+* Debugger verwenden
+* Basic Code Completion (AutoComplete) verwenden (Strg + Leertaste)
+* Smart Code Completion verwenden (Ctrl + Shft + Leertaste)
+* Refactoring (Strg + T) zB beim Umbenennen von Variablen/Methoden
+* ...
+* Keymap Referenz unter Hilfe ansehen
+
+==== (Zwischen-)Ergebnisse kontrollieren
+
+* Es ist wichtig die Ergebnisse der Methoden und Codefragmente zu kontrollieren.
+
+* Die Annahme, dass der Code schon funktionieren wird, ist nicht zulässig. Das ist wie programmieren mit Augenbinde.
+
+* Entweder
+** wird der Debugger verwendet (die vorzuziehende Vorgehensweise)
+** oder mit logging- oder println-Ausgaben wird das Ergebnis kontrolliert (eher nur in Ausnahmefällen verwenden)
+
+* Dies ist der Grund, warum wir eine professionelle IDE verwenden und nicht irgendeinen Code-Editor
+
+==== Verbesserung sauber ausarbeiten
+
+* Eine Verbesserung der Arbeit ist hauptsächlich dazu da, die eigenen Fehler zu reflektieren
+** Ihr macht Sie nicht für den Lehrer
+** Im besten Fall dient Eure Verbesserung (Beschreibung der Fehler und die Maßnahmen zur Korrektur)
+beim nächsten Test als Grundlage
+** Die Erstellung eines pdf-Dokuments soll es Euch ermöglichen auch vor dem nächsten
+Test noch mal Eure Fehler durchzugehen und nicht in x Codestellen in vielleicht mehreren Projekten
+zusammenzusuchen
+
+IMPORTANT: Nach einer Arbeit ist grundsätzlich von jedem eine Verbesserung durchzuführen,
+nicht nur von Personen mit negativer Note!!!
 

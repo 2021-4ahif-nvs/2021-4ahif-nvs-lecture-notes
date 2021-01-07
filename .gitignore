@@ -6,3 +6,4 @@ asciidocs/revealjs/
 revealjs.zip
 gh-pages
 /asciidocs/.asciidoctor/
+.DS_Store
