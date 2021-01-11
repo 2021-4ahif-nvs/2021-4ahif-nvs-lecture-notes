@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="author" content="Thomas Stütz">
+<link rel="icon" type="image/png" href="themes/favicon.png">
+<title>Assignment 01 Grading</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+:not(pre)>code.nobreak{word-wrap:normal}
+:not(pre)>code.nowrap{white-space:nowrap}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge .hll {
+  background-color: #ffc;
+}
+pre.rouge .hll * {
+  background-color: initial;
+}
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Assignment 01 Grading</h1>
+<div class="details">
+<span id="author" class="author">Thomas Stütz</span><br>
+<span id="revnumber">version 1.0.0,</span>
+<span id="revdate">2020-09-21</span>
+<br><span id="revremark">crud endpoint for a single entity</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_bewertung_assignment_1">1. Bewertung Assignment 1</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_bewertung_assignment_1"><a class="anchor" href="#_bewertung_assignment_1"></a>1. Bewertung Assignment 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Download am 2020-10-14 14:13</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 66.6666%;">
+<col style="width: 16.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">lfd.Nr.</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Kommentar</th>
+<th class="tableblock halign-left valign-top">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AD</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Tageszeitung</p>
+</li>
+<li>
+<p>unzureichende Dokumentation im README.md</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case</p>
+</li>
+<li>
+<p>es fehlen die Requests in request.http</p>
+</li>
+<li>
+<p>Das scheint mir etwas überspezifiziert</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@XmlRootElement</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Author</span> <span class="o">{</span>
+
+    <span class="nd">@XmlElement</span> <span class="kd">private</span> <span class="nc">String</span> <span class="n">firstname</span><span class="o">;</span>
+    <span class="nd">@XmlElement</span> <span class="kd">private</span> <span class="nc">String</span> <span class="n">lastname</span><span class="o">;</span>
+    <span class="nd">@XmlElement</span> <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">birthDate</span><span class="o">;</span>
+    <span class="nd">@XmlElement</span> <span class="kd">private</span> <span class="kt">long</span> <span class="n">authorID</span><span class="o">;</span>
+    <span class="c1">//..</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>kein POST vorhanden</p>
+</li>
+<li>
+<p><strong>DAS PROJEKT IST NICHT LAUFFÄHIG, DU HAST DAS mvnw-Skript NICHT COMMITTED !!!</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>im Normalfall ist das ein ngd(5)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gen(4)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BK aka M</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Produktionsbetrieb (Fließband)</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md</p>
+</li>
+<li>
+<p>zuwenige Commits (nur 3)</p>
+</li>
+<li>
+<p>./mvnw clean compile quarkus:dev funktioniert nicht</p>
+<div class="ulist">
+<ul>
+<li>
+<p>java.lang.ClassNotFoundException: org.apache.maven.wrapper.MavenWrapperMain</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Aufruf stimmt nicht mit Route überein</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Response code: 405 (Method Not Allowed)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Für diese Route gibt es KEINEN Endpoint</div>
+<div class="content">
+<pre>GET http://localhost:8080/api/product
+Accept: application/json</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>irgendwie funktioniert gar nichts</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "details": "Error handling 17818ca0-5f4b-4730-9873-4ec09a635ca1-1, org.jboss.resteasy.spi.UnhandledException: java.lang.NullPointerException: Cannot invoke "
+  at.htl.produktionsverwaltung.entity.Product.getProductName()
+  " because the return value of "
+  at.htl.produktionsverwaltung.repository.ProductRepository.findByID(java.lang.Long)
+  " is null",
+  "stack": "org.jboss.resteasy.spi.UnhandledException: java.lang.NullPointerException: Cannot invoke \"at.htl.produktionsverwaltung.entity.Product.getProductName()\" because the return value of \"at.htl.produktionsverwaltung.repository.ProductRepository.findByID(java.lang.Long)\" is null\n
+}</pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gen(4)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BB</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Centermanager</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md (aber Du hast wenigstens Deinen Namen dabei)</p>
+</li>
+<li>
+<p>Es gibt eine verblüffende Gleichheit zwischen Deiner und der Abgabe von Hrn Raid
+<span class="image"><img src="images/comparison-besic-raid.png" alt="comparison besic raid"></span></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through">gut(2)</span> &#8594;gen(4)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BP</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Baustellenkoordinator</p>
+</li>
+<li>
+<p>n/a</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ngd(5)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BJ</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Baumschule</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case</p>
+</li>
+<li>
+<p>Du weißt schon was eine Baumschule ist. Dort gibt es keine Lehrer sondern Gärtner.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ein Baumschule ist eine Gärtnerei</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Das ist wohl zu kompliziert</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wieso verwendest Du zwei Methoden und dann auch noch mit JsonValue</p>
+</li>
+<li>
+<p>Eine Methode mit JsonValue hätte gereicht oder 2 Methoden je mit JsonArray und JsonObject</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Path</span><span class="o">(</span><span class="s">"api/teachers"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TeacherService</span> <span class="o">{</span>
+
+    <span class="nd">@POST</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">"addTeacher"</span><span class="o">)</span>
+    <span class="nd">@Produces</span><span class="o">({</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_XML</span><span class="o">,</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">})</span>
+    <span class="nd">@Consumes</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Response</span> <span class="nf">saveTeacher</span><span class="o">(</span><span class="nc">JsonValue</span> <span class="n">teacher</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Response</span>
+                <span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="s">"Teacher: "</span> <span class="o">+</span> <span class="nc">Repository</span><span class="o">.</span><span class="na">saveTeacher</span><span class="o">(</span><span class="n">teacher</span><span class="o">.</span><span class="na">asJsonObject</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@POST</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">"addTeachers"</span><span class="o">)</span>
+    <span class="nd">@Produces</span><span class="o">({</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_XML</span><span class="o">,</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">})</span>
+    <span class="nd">@Consumes</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Response</span> <span class="nf">saveTeachers</span><span class="o">(</span><span class="nc">JsonValue</span> <span class="n">teachers</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Response</span>
+                <span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="s">"Size: "</span> <span class="o">+</span> <span class="nc">Repository</span><span class="o">.</span><span class="na">saveTeachers</span><span class="o">(</span><span class="n">teachers</span><span class="o">.</span><span class="na">asJsonArray</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="c1">//...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Wir müssen über die Gestaltung der Responses sprechen.</p>
+</li>
+<li>
+<p>Es ist nicht optimal, wenn man beliebig oft ein und dieselbe Person POSTen kann und es wird jeweils ein Datensatz erstellt</p>
+</li>
+<li>
+<p>Bei xml funktioniert die Ausgabe des Datums nicht &#8594; XmlAdapter verwenden</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;collection&gt;</span>
+    <span class="nt">&lt;teacherEntity&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="nt">&lt;address&gt;</span>Liebigstrasse 16<span class="nt">&lt;/address&gt;</span>
+        <span class="nt">&lt;birthDate/&gt;</span>
+        <span class="nt">&lt;insuranceNumber&gt;</span>JW 74 85 38 D<span class="nt">&lt;/insuranceNumber&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Andrea Buche<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/teacherEntity&gt;</span>
+<span class="nt">&lt;/collection&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>&lt;Teacher&gt; wäre ausreichend
+<div class="ulist">
+<ul>
+<li>
+<p>Dein DELETE funktioniert nicht</p>
+<div class="ulist">
+<ul>
+<li>
+<p>die Route ist im Service und im .http File unterschiedlich</p>
+</li>
+<li>
+<p>probierst Du Deine Endpoints nicht aus?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>trotzdem sehr sauber</p>
+</li>
+</ul>
+</div></td>
+</tr>
+</table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BN</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Kochrezepte</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case</p>
+</li>
+<li>
+<p>Packages verwenden</p>
+<div class="ulist">
+<ul>
+<li>
+<p>RecipeService &#8594; Package boundary</p>
+</li>
+<li>
+<p>Repository &#8594; package control</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>sehr umfangreich und toll gemacht</p>
+</li>
+<li>
+<p>Anmerkung:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">derzeit</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="w">    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500g"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Faschiertes vom Rind"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 EL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semmelbrösel"</span><span class="w">
+      </span><span class="p">},</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">besser wäre</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="w">    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">  <i class="conum" data-value="1"></i><b>(1)</b>
+        </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"g"</span><span class="w">   <i class="conum" data-value="2"></i><b>(2)</b>
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Faschiertes vom Rind"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EL"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semmelbrösel"</span><span class="w">
+      </span><span class="p">},</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>JsonNumber anstelle von JsonString</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Verwendung einer Einheit (Unit)
+<div class="ulist">
+<ul>
+<li>
+<p>Es ist nicht optimal, wenn man beliebig oft ein und dieselbe Person POSTen kann und es wird jeweils ein Datensatz erstellt</p>
+</li>
+<li>
+<p>Wird ein DELETE 2 x durchgeführt</p>
+<div class="ulist">
+<ul>
+<li>
+<p>java.util.NoSuchElementException: No value present</p>
+</li>
+<li>
+<p>hätte man auch abfangen können</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></td>
+</tr>
+</table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sgt(1)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EB</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Farmverwaltung</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md</p>
+</li>
+<li>
+<p>Packages verwenden</p>
+</li>
+<li>
+<p>Bei dob reicht ein LocalDate, es muss kein LocalDateTime sein (in Klasse Animal)</p>
+</li>
+<li>
+<p>(+) Singleton für Repository verwendet</p>
+</li>
+<li>
+<p>sprechende Namen verwenden &#8594; ExampleResource (?!)</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case</p>
+</li>
+<li>
+<p>Du legst ein neues Tier mit @GET an??? &#8594; in der ExampleResource</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Im .http-file verwendest Du POST</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Du verwendest @Transactional. Wir haben noch gar keine Datenbank.</p>
+</li>
+<li>
+<p>Ist zwar lauffähig, funktioniert aber nicht</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gen(4)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EM</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Optiker</p>
+</li>
+<li>
+<p>Doku im README.md ungenügend, aber zumindest im äußeren README, hast Du eine Info zum starten drinnen</p>
+</li>
+<li>
+<p>mit LocalDateAdapter &#8594; Bravo</p>
+</li>
+<li>
+<p>sehr sauber und vollständig</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sgt(1)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GL</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Facility Management</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case</p>
+<div class="ulist">
+<ul>
+<li>
+<p>eher kurze Routen verwenden</p>
+</li>
+<li>
+<p>Du verwendest außerdem doppelte Routen !!!!!!!!!!!!!!!!!!!!!!!!!</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">bei diesem Java-Code &#8230;&#8203;</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Path</span><span class="o">(</span><span class="s">"FacilityManagement"</span><span class="o">)</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FacilityManagement</span> <span class="o">{</span>
+    <span class="nd">@POST</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">"FacilityManagement"</span><span class="o">)</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="nd">@Consumes</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Response</span> <span class="nf">createWorker</span><span class="o">(</span><span class="nc">Worker</span> <span class="n">worker</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">FacilityManagementRepository</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+        <span class="k">return</span> <span class="nc">Response</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">worker</span><span class="o">,</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">muss man die Route doppelt angeben &#8230;&#8203;</div>
+<div class="content">
+<pre>POST http://localhost:8080/FacilityManagement/FacilityManagement
+Content-Type: application/json
+
+{
+  "name": "Walter Klein",
+  "birthdate": "18.09.1988",
+  "typeOfFacilityManagementThatCanBePerformed" : "CLEANING"
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">doch dann kommt diese Fehlermeldung</div>
+<div class="content">
+<pre>javax.ws.rs.ProcessingException: RESTEASY008200: JSON Binding deserialization error:
+javax.json.bind.JsonbException: Unable to deserialize property &lt;birthdate&gt; because of:
+Error parsing class java.util.Date from value: 18.09.1988.
+Check your @JsonbDateFormat has all time units for class java.util.Date type, or consider using org.eclipse.yasson.YassonConfig#ZERO_TIME_PARSE_DEFAULTING.</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>swagger funktioniert nicht</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bef(3)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HL</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Zooverwaltung</p>
+</li>
+<li>
+<p>Entität ok</p>
+</li>
+<li>
+<p>Repository rudimentär</p>
+</li>
+<li>
+<p>Endpoint rudimentär</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ngd(5)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HN</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Event-Manager</p>
+</li>
+<li>
+<p>keine Doku im README.md</p>
+</li>
+<li>
+<p>Das Repository im Package entity?</p>
+</li>
+<li>
+<p>Es ist nicht korrekt, wenn man beliebig oft ein und daselbe Element POSTen kann und es wird jeweils ein Datensatz erstellt</p>
+</li>
+<li>
+<p>PUT funktioniert nicht</p>
+</li>
+<li>
+<p>XML Responses fehlen</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HT</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Reisebüro (Travel Agency)</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md</p>
+</li>
+<li>
+<p>git ok (Messages könnten aussagekräftiger sein)</p>
+</li>
+<li>
+<p>Dein Repo hat keine save-Methode. Das widerspricht dem Repository Pattern</p>
+</li>
+<li>
+<p>Es ist nicht korrekt, wenn man beliebig oft ein und daselbe Element POSTen kann und es wird jeweils ein Datensatz erstellt</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Plattenlabel</p>
+</li>
+<li>
+<p>keine ausreichende Doku im README.md</p>
+</li>
+<li>
+<p>application.properties</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>für Quarkus im dev-mode sind keine Properties einzutragen</p>
+</li>
+<li>
+<p>deine Property ist falsch geschrieben: quarkus nicht uarkus</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><code>deathrow</code> ist wahrscheinlich nicht die optimale Bezeichnung für die route.
+<code>api</code> wäre vermutlich besser</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden, sondern kebab-Case</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">nicht ok</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SongRepository</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">SongRepository</span> <span class="n">instance</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Song</span><span class="o">&gt;</span> <span class="n">songs</span><span class="o">;</span>
+    <span class="c1">//...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">ok</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SongRepository</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">SongRepository</span> <span class="n">instance</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Song</span><span class="o">&gt;</span> <span class="n">songs</span><span class="o">;</span>
+    <span class="c1">//...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Es ist nicht optimal, wenn man beliebig oft ein und dieselben Song POSTen kann und es wird jeweils ein Datensatz erstellt</p>
+</li>
+<li>
+<p>Wird ein DELETE 2 x durchgeführt</p>
+<div class="ulist">
+<ul>
+<li>
+<p>UnhandledException: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0</p>
+</li>
+<li>
+<p>hätte man auch abfangen können</p>
+</li>
+<li>
+<p>Dein feiner Algorithmus für die DELETE-MEthode ist sehenswert.
+Mit der Holzhammermethode löscht Du immer den ersten Datensatz.
+Wieso verwendest Du dann einen @PathParam?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">KJ</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Parkplatzverwaltung</p>
+</li>
+<li>
+<p>Du könntest Dein Projekt wie angegeben u.a. mit Deinem Namen benennen.</p>
+</li>
+<li>
+<p>keine Doku im README.md</p>
+</li>
+<li>
+<p>Es ist nicht korrekt, wenn man beliebig oft ein und dasselbe Element POSTen kann und es wird jeweils ein neuer Datensatz erstellt</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">KV</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Skischule</p>
+</li>
+<li>
+<p>keine Doku im README.md</p>
+</li>
+<li>
+<p>kein swagger aktiviert</p>
+</li>
+<li>
+<p>nur 1 commit (?!)</p>
+</li>
+<li>
+<p>Es ist nicht korrekt, wenn man beliebig oft ein und dasselbe Element POSTen kann und es wird jeweils ein neuer Datensatz erstellt</p>
+</li>
+<li>
+<p>PUT und DELETE funktioniert, auch bei mehrfacher Ausführung</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ÖM</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Fitnessstudio</p>
+</li>
+<li>
+<p>Du sollst und musst Git verwenden !!!!</p>
+</li>
+<li>
+<p>MEthoden sind klein zu schreiben!!!</p>
+</li>
+<li>
+<p>Es ist nicht optimal, wenn man beliebig oft ein und dieselbe SportEquipment POSTen kann und es wird jeweils ein Datensatz erstellt</p>
+</li>
+<li>
+<p>Wird ein DELETE 2 x durchgeführt</p>
+<div class="ulist">
+<ul>
+<li>
+<p>java.util.NoSuchElementException: No value present</p>
+</li>
+<li>
+<p>hätte man auch abfangen können</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Fakturierung</p>
+</li>
+<li>
+<p>n/a</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ngd(5)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM2</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Kfz-Händler</p>
+</li>
+<li>
+<p>keine Dokumentation in README.md</p>
+</li>
+<li>
+<p>Dein POST Endpoint verlangt einen Body, im Aufruf hast Du aber keinen</p>
+<div class="ulist">
+<ul>
+<li>
+<p>UnhandledException: java.lang.NullPointerException: Cannot invoke "Object.toString()" because "car" is null</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Dein PUT funktioniert auch nicht</p>
+<div class="ulist">
+<ul>
+<li>
+<p>org.jboss.resteasy.spi.UnhandledException: java.lang.NullPointerException: Cannot invoke "at.htl.cardealer.entity.Car.getId()" because "c" is null</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Da machst Du einen gröberen  Fehler</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">[</span><span class="w">
+  </span><span class="kc">null</span><span class="p">,</span><span class="w"> <i class="conum" data-value="1"></i><b>(1)</b>
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mercedes"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"black"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"construction_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2017</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"horsePower"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E500"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>dieses Element muss entfernt werden; es ist aber noch da, nur ist es null.
+Dieser Zustand trat ein, bevor DELETE aufgerufen wurde
+<div class="ulist">
+<ul>
+<li>
+<p>Dein DELETE ist auch nicht besonders erfolgreich</p>
+</li>
+</ul>
+</div></td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "details": "Error handling 088db169-b1c7-4a6a-b069-f7bb4b7352e1-4, org.jboss.resteasy.spi.UnhandledException: java.lang.NullPointerException: Cannot invoke "
+  at.htl.cardealer.entity.Car.getId()
+  " because "
+  c
+  " is null",
+  "stack": "org.jboss.resteasy.spi.UnhandledException: java.lang.NullPointerException: Cannot invoke \"at.htl.cardealer.entity.Car.getId()\" because \"c\" is null\n	at org.jboss.resteasy.core.ExceptionHandler.handleApplicationException(ExceptionHandler.java:106)\n	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:372)\n	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:216)\n	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:515)\n	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$invoke$4(SynchronousDispatcher.java:259)\n	at org.jboss.resteasy.core.SynchronousDispatcher.lambda$preprocess$0(SynchronousDispatcher.java:160)\n	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)\n	at org.jboss.resteasy.core.SynchronousDispatcher.preprocess(SynchronousDispatcher.java:163)\n	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:245)\n	at io.quarkus.resteasy.runtime.standalone.RequestDispatcher.service(RequestDispatcher.java:73)\n	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.dispatch(VertxRequestHandler.java:131)\n	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler.access$000(VertxRequestHandler.java:37)\n	at io.quarkus.resteasy.runtime.standalone.VertxRequestHandler$1.run(VertxRequestHandler.java:94)\n	at io.quarkus.runtime.CleanableExecutor$CleaningRunnable.run(CleanableExecutor.java:231)\n	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\n	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)\n	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2046)\n	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1578)\n	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1452)\n	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:29)\n	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)\n	at java.base/java.lang.Thread.run(Thread.java:832)\n	at org.jboss.threads.JBossThread.run(JBossThread.java:479)\nCaused by: java.lang.NullPointerException: Cannot invoke \"at.htl.cardealer.entity.Car.getId()\" because \"c\" is null\n	at at.htl.cardealer.CarRepository.lambda$remove$0(CarRepository.java:33)\n	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:176)\n	at java.base/java.util.LinkedList$LLSpliterator.tryAdvance(LinkedList.java:1256)\n	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:127)\n	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:502)\n	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:488)\n	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)\n	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)\n	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)\n	at java.base/java.util.stream.ReferencePipeline.findAny(ReferencePipeline.java:548)\n	at at.htl.cardealer.CarRepository.remove(CarRepository.java:33)\n	at at.htl.cardealer.boundary.CarService.delete(CarService.java:52)\n	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\n	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.base/java.lang.reflect.Method.invoke(Method.java:564)\n	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:167)\n	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:130)\n	at org.jboss.resteasy.core.ResourceMethodInvoker.internalInvokeOnTarget(ResourceMethodInvoker.java:638)\n	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTargetAfterFilter(ResourceMethodInvoker.java:504)\n	at org.jboss.resteasy.core.ResourceMethodInvoker.lambda$invokeOnTarget$2(ResourceMethodInvoker.java:454)\n	at org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext.filter(PreMatchContainerRequestContext.java:364)\n	at org.jboss.resteasy.core.ResourceMethodInvoker.invokeOnTarget(ResourceMethodInvoker.java:456)\n	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:417)\n	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:391)\n	at org.jboss.resteasy.core.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:68)\n	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:488)\n	... 20 more"
+}</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>nur 2 commits :-(</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gen(4)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RY</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Friseurladen</p>
+</li>
+<li>
+<p>keine Dokumentation in README.md</p>
+</li>
+<li>
+<p>nur 3 commits</p>
+<div class="ulist">
+<ul>
+<li>
+<p>eigentlich dachte ich Du erstellst eine Terminreservierung für einen Barber-Shop.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Dein Repository hat keine save()-Methode. Du addest direkt im Endpoint. Das ist nicht korrekt.</p>
+</li>
+<li>
+<p>Du verwendest @Transactional, aber Du verwendest kein CDI.</p>
+</li>
+<li>
+<p>du hast einen Wirbel mit Deinen routes (im Code "barberShop" im aufruf "shops")</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case</p>
+</li>
+<li>
+<p>PUT wirft Fehlermeldung, wenn Element nicht vorhanden</p>
+<div class="ulist">
+<ul>
+<li>
+<p>java.util.NoSuchElementException: No value present</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>PUT wirft auch Fehlermeldung, wenn Element vorhanden</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>PUT http://localhost:8080/shops/freestyleBarber
+
+HTTP/1.1 200 OK
+Content-Length: 34
+Content-Type: application/json
+
+Shop freestyleBarberdoesn't exist!
+
+Response code: 200 (OK); Time: 28ms; Content length: 34 bytes</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DELETE funktioniert nicht bei mehrmaligen Aufruf</p>
+<div class="ulist">
+<ul>
+<li>
+<p>java.util.NoSuchElementException: No value present</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Ausgabe zu xml funktioniert nicht</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through">bef(3)</span> &#8594; gen(4)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RR</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Restaurant</p>
+</li>
+<li>
+<p>n/a</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ngd(5)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RF</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Juwelier</p>
+</li>
+<li>
+<p>kein Swagger installiert</p>
+</li>
+<li>
+<p>nur 2 git commits</p>
+</li>
+<li>
+<p>Immer möglichst abstrakt deklarieren (zB mit Interface)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">nicht ok</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Repository</span> <span class="o">{</span>
+
+    <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Jewelery</span><span class="o">&gt;</span> <span class="n">jeweleryList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">//...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">besser</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Repository</span> <span class="o">{</span>
+
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Jewelery</span><span class="o">&gt;</span> <span class="n">jeweleryList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">//...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SE</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Busreisen (inkl Schulbusse)</p>
+</li>
+<li>
+<p>keine Dokumentation in README.md</p>
+</li>
+<li>
+<p><code>request.http</code> bitte immer im Ordner http-requests ablegen</p>
+</li>
+<li>
+<p>Rückgabe von LocalDatetime in XML funktioniert nicht &#8594; XmlAdapter verwenden</p>
+</li>
+<li>
+<p>Formatierung von LocalDateTime in Response ist unübersichtlich &#8594; <a href="https://github.com/quarkusio/quarkus/issues/8611#issuecomment-614695866" target="_blank" rel="noopener">info</a></p>
+</li>
+<li>
+<p>Es ist nicht optimal, wenn man beliebig oft ein und dieselben Ride POSTen kann und es wird jeweils ein Datensatz erstellt</p>
+</li>
+<li>
+<p>Wird ein DELETE 2 x durchgeführt</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Response code: 500 (Internal Server Error)</p>
+</li>
+<li>
+<p>das widerspricht der Idempotenz-Anforderung</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SB</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Autovermietung</p>
+</li>
+<li>
+<p>keine ausreichende Dokumentation in README.md</p>
+</li>
+<li>
+<p>im Repository musst Du die Methode nicht saveCar() benennen, nur save() reicht</p>
+</li>
+<li>
+<p>es fehlt ein Endpoint, um nur ein Auto abzurufen.</p>
+</li>
+<li>
+<p>git ok</p>
+</li>
+<li>
+<p>Dein DELETE ist so nicht korrekt. Man gibt keinen Body mit, sondern "nur" eine id</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SP</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Tanzschule</p>
+</li>
+<li>
+<p>keine Dokumentation in README.md</p>
+</li>
+<li>
+<p>Deine Entity-Klasse hat keine Setter</p>
+</li>
+<li>
+<p>Endpoint nur rudimentär</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ngd(5)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TF</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Bücherei</p>
+</li>
+<li>
+<p>ungenügende Dokumentation in README.md</p>
+</li>
+<li>
+<p>Schon mal was vom Geheimnisprinzip / Kapselung gehört?</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">bookName</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">publisher</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">autor</span><span class="o">;</span>
+    <span class="c1">//...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sollte Dein Repository nicht ein paar Methoden haben?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Du hast die gesamte Logik des Repositories in den Endpoint ausgelagert.
+Das ist nicht ok.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookRepository</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">BookRepository</span> <span class="n">instance</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Book</span><span class="o">&gt;</span> <span class="n">books</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">BookRepository</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="nc">BookRepository</span><span class="o">.</span><span class="na">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="nc">BookRepository</span><span class="o">.</span><span class="na">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BookRepository</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="nc">BookRepository</span><span class="o">.</span><span class="na">instance</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Book</span><span class="o">&gt;</span> <span class="nf">getBookList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">books</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Man sollte auch ein einzelnes Buch abrufen können</p>
+</li>
+<li>
+<p>Man kann ein POST beliebig oft wiederholen und das Element wird immer wieder eingefügt</p>
+</li>
+<li>
+<p>Führt man ein DELETE mehrmals aus</p>
+<div class="ulist">
+<ul>
+<li>
+<p>java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3</p>
+</li>
+<li>
+<p>hätte man auch abfangen können</p>
+</li>
+<li>
+<p>Beim Löschen löschst Du nicht die id == 3 sondern immer die Position 3 (index)
+&#8594; Algorithmus ist mies</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Du kannst kein XML zurückgeben, nur Json</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gut(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TP</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Friedhofsverwaltung</p>
+</li>
+<li>
+<p>ungenügende Dokumentation in README.md</p>
+</li>
+<li>
+<p>Die gesamte Repository-Logik ist im Endpoint.</p>
+</li>
+<li>
+<p>swagger nicht aktiviert</p>
+</li>
+<li>
+<p>die commits sind überschaubar</p>
+</li>
+<li>
+<p>da hätte eine toString()-Methode durchaus Sinn gemacht</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>POST http://localhost:8080/Graveyard/Init
+
+HTTP/1.1 200 OK
+Content-Length: 0
+POST: [at.htl.graveyard.entity.Gravestone@73d1441b, at.htl.graveyard.entity.Gravestone@3620636, at.htl.graveyard.entity.Gravestone@24d705a3, at.htl.graveyard.entity.Gravestone@7cea504b, at.htl.graveyard.entity.Gravestone@5622251]
+
+&lt;Response body is empty&gt;
+
+Response code: 200 (OK); Time: 61ms; Content length: 0 bytes</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Du machst beim init ein POST, obwohl der Body leer ist</p>
+</li>
+<li>
+<p>Dein DELETE funktioniert nicht, Du löscht einfach einen index und keine id</p>
+</li>
+<li>
+<p>detto beim PUT</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bef(3)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WM</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Thema Callcenter</p>
+</li>
+<li>
+<p>commits sogar mit branches.</p>
+</li>
+<li>
+<p>einmal keine List als Collection &#8594; Bravo</p>
+</li>
+<li>
+<p>Man kann ein POST beliebig oft wiederholen und das Element wird immer wieder eingefügt</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sgt(1)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Kriterien</div>
+<ul>
+<li>
+<p>Das Projekt muss lauffähig sein (am Besten in ein neues Verzeichnis clonen und ausprobieren)</p>
+</li>
+<li>
+<p>Testdaten sind sehr hilfreich</p>
+</li>
+<li>
+<p>CRUD muss vorhanden sein</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Allgemeine Bemerkungen</div>
+<ul>
+<li>
+<p>die Angabe ist keine Empfehlung / Vorschlag sondern bindend</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Benennung des Projekts</p>
+</li>
+<li>
+<p>Commits</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Das Java-Projekt muss direkt im Repo-Ordner sein, nicht in einem Unterverzeichnis</p>
+</li>
+<li>
+<p>Bezeichner in englisch (ist so üblich)</p>
+</li>
+<li>
+<p>ist eine List wirklich die geeignete Collection für das Repository</p>
+</li>
+<li>
+<p>der erste url einer RESTful-API sollte <code>/api</code> sein  (ebenfalls sehr oft üblich)</p>
+</li>
+<li>
+<p>in den routes nicht Groß-Kleinschreibung verwenden sondern kebab-Case</p>
+</li>
+<li>
+<p>Im README-md file könnte man grob die inhaltliche Zielsetzung umreißen.</p>
+</li>
+<li>
+<p>Repositories: Warum und Aufbau</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Kritische Anmerkungen zum Repository Pattern bei Verwendung eines ORM</p>
+</li>
+<li>
+<p>Was ist ein Aggregate bzw. Root Aggregate (Starke Entität))</p>
+</li>
+<li>
+<p><a href="https://thorben-janssen.com/implementing-the-repository-pattern-with-jpa-and-hibernate/" target="_blank" rel="noopener">Implementing the Repository pattern with JPA and Hibernate</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Verwendung von Streams (anstelle von Schleifen)</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Was ist als nächstes zu lernen?</div>
+<ul>
+<li>
+<p>Verwendung von CDI</p>
+</li>
+<li>
+<p>Paging als QueryParam</p>
+</li>
+<li>
+<p>Fehlerbehandlung &#8594; WebException</p>
+</li>
+<li>
+<p>Wie sind die Responses aufgebaut?</p>
+</li>
+<li>
+<p>Kalenderdatum als Parameter bzw Datenbestandteil</p>
+</li>
+<li>
+<p>Automatisierte Tests</p>
+<div class="ulist">
+<ul>
+<li>
+<p>des Repositories</p>
+</li>
+<li>
+<p>der Endpoints</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0.0<br>
+Last updated 2020-10-17 14:13:12 UTC
+</div>
+</div>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
+</body>
+</html>
