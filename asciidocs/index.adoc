@@ -937,3 +937,41 @@ zusammenzusuchen
 IMPORTANT: Nach einer Arbeit ist grundsätzlich von jedem eine Verbesserung durchzuführen,
 nicht nur von Personen mit negativer Note!!!
 
+== 2021-02-01 - Kotlin Einführung
+
+* Foliensatz: Kotlin-Grundlagen
+
+== 2021-02-04: Kotlin und Funktional
+
+== 2021-02-22: Kotlin und OO
+
+== 2021-03-01
+
+jetpack
+
+jetpack compose
+
+Gr. 1: ab extension methods
+
+== 2021-03-08
+
+* recyclerview
+
+
+== 2021-03-15
+
+* Vereinbarung:
+Für das nächste Mal wird probeweise eine RecyclerView im Rahmen des Microprojekts erstellt
+** mit mehreren Feldern
+
+* Falls es eine LZK gibt, dann keine RecyclerView
+
+
+
+
+
+
+
+
+
+
