@@ -966,7 +966,19 @@ Für das nächste Mal wird probeweise eine RecyclerView im Rahmen des Microproje
 
 * Falls es eine LZK gibt, dann keine RecyclerView
 
+== 2021-03-18
 
+* Übung
+
+** Classroom: wird noch (hier) bekannt gegeben.
+
+** Ausgangspunkt ist das Mikroprojekt
+** Es ist eine Liste mit RecycleView in ANdroid zu erstellen
+** Die Commits-Messages müssen mit dem NAchnamen beginnen.
+** Diese Übung ist Grundlage für LZK-Gespräche
+** Im README.md ist kurz das Projektthema und die Implementierung zu beschreiben
+** In der ORacle VM ist ein Quarkus-Restful-Service zu erstellen (mit automatiserter Pipeline)
+*** passend zum Microprojekt
 
 
 
