@@ -970,7 +970,8 @@ Für das nächste Mal wird probeweise eine RecyclerView im Rahmen des Microproje
 
 * Übung
 
-** Classroom: wird noch (hier) bekannt gegeben.
+** Classroom: https://classroom.github.com/a/IKBe6iXb
+
 
 ** Ausgangspunkt ist das Mikroprojekt
 ** Es ist eine Liste mit RecycleView in ANdroid zu erstellen
@@ -979,6 +980,7 @@ Für das nächste Mal wird probeweise eine RecyclerView im Rahmen des Microproje
 ** Im README.md ist kurz das Projektthema und die Implementierung zu beschreiben
 ** In der ORacle VM ist ein Quarkus-Restful-Service zu erstellen (mit automatiserter Pipeline)
 *** passend zum Microprojekt
+*** verwenden Sie hierzu Ihr https://classroom.github.com/classrooms/71467635-2021-4ahif-nvs/assignments/microproject[quarkus-microproject]
 
 
 
