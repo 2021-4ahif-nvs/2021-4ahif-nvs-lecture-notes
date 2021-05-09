@@ -974,18 +974,29 @@ Für das nächste Mal wird probeweise eine RecyclerView im Rahmen des Microproje
 
 
 ** Ausgangspunkt ist das Mikroprojekt
-** Es ist eine Liste mit RecycleView in ANdroid zu erstellen
-** Die Commits-Messages müssen mit dem NAchnamen beginnen.
+** Es ist eine Liste mit RecyclerView in Android zu erstellen
+** Die Commits-Messages müssen mit dem Nachnamen beginnen.
 ** Diese Übung ist Grundlage für LZK-Gespräche
 ** Im README.md ist kurz das Projektthema und die Implementierung zu beschreiben
-** In der ORacle VM ist ein Quarkus-Restful-Service zu erstellen (mit automatiserter Pipeline)
+** In der ORacle VM ist ein Quarkus-Restful-Service zu erstellen (mit automatisierter Pipeline)
 *** passend zum Microprojekt
-*** verwenden Sie hierzu Ihr https://classroom.github.com/classrooms/71467635-2021-4ahif-nvs/assignments/microproject[quarkus-microproject]
+*** verwenden Sie hierzu Ihr https://classroom.github.com/classrooms/71467635-2021-4ahif-nvs/assignments/microproject[quarkus-microproject, window="_blank"]
+
+== 2021-03-18
+
+== 2021-03-22
+
+=== Android Fragments
+
+=== Android Navigation
+
+* fertigstellen des Tutorials Navigation bis Donnerstag 25.3.
+* bis nach den Osterferien mindestens bis inklusive Persistence
 
 
 
+== 2021-05-06
 
-
-
+image:applicationserver-vs-microprofile.png[]
 
 
