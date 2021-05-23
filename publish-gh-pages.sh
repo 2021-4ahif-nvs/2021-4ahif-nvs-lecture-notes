@@ -11,6 +11,7 @@ cd $BUILD_DIR
 git init
 git add .
 git commit -m "$USER - rebuilding gh-pages $(date)"
+git branch -m master
 git remote add origin $ORIGIN_URL
 git push --force origin master:gh-pages
 cd $OLD
