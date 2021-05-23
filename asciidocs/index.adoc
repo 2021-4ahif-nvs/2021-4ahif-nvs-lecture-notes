@@ -993,10 +993,82 @@ Für das nächste Mal wird probeweise eine RecyclerView im Rahmen des Microproje
 * fertigstellen des Tutorials Navigation bis Donnerstag 25.3.
 * bis nach den Osterferien mindestens bis inklusive Persistence
 
+== 2021-05-03
 
+=== Android Room
+
+* https://htl-leonding-college.github.io/android-classroom-course/room-tutorial.html[Android / Room Tutorial]
 
 == 2021-05-06
 
 image:applicationserver-vs-microprofile.png[]
 
+== 2021-05-10
 
+* work/android.4ahif/RoomApp4ahifGrA
+* work/android.4ahif/RoomApp4ahifGrB
+
+
+== 2021-05-17
+
+Room - Bsp bis inkl. Navigation
+
+
+== 2021-05-20
+
+=== Internationalization (I18N)
+
+* Internationalisierung bedeutet, ein Programm so zu gestalten,
+dass es leicht (ohne den Quellcode ändern zu müssen) an andere Sprachen
+angepasst werden kann.
+
+* Grundprinzip von I18N
+
+** Es gibt key-value Paare. Der key wird in das Programm eingetragen.
+Im Value steht der Ausdruck in der jeweiligen Sprache.
+
+** Um mehrere Sprachen verwenden zu können werden entweder
+*** die Ressourcen - Dateien mit Spachenkennzeichen versehen
+*** oder die Verzeichnisse, die diese Dateien beinhalten
+
+* https://docs.oracle.com/javase/tutorial/i18n/intro/after.html[Beispiel in Java, window="_blank"]
+
+=== Room-Tutorial
+
+bis "7. Implement the AddFragment"
+
+== Konkretisierung der Angabe für das Mikroprojekt
+
+* Das Microprojekt besteht aus zwei Teilen:
+** Backend (Quarkus / JakartaEE)
+** Frontend (Android)
+
+* Zuerst ist das Backend sauber zu erstellen (Ordner `backend` im Repository)
+** Die Tabellen und deren Assoziationen müssen korrekt sein und mind. der 3.NF entsprechen
+** Es sind Endpoints zu erstellen:
+*** Bei den Endpoints dürfen nicht nur die Daten jeweils einer Entität (Tabelle) zurückgegeben werden, sondern es ist mindestens eine Query zu erstellen, die aus mehreren Tabellen Daten zurück gibt.
+*** Auch sind die Werte zu filtern:
+**** zumindest einmal mit QueryParams
+**** zumindest einmal mit PathParams
+*** Mindestens ein Endpoint muss
+**** einen GET-Request
+**** einen POST-Request
+***** einmal mit nur einem Objekt und
+***** einmal mit mehreren Objekten
+**** einen PUT-Request
+**** einen PATCH-Request
+**** und einen DELETE-Request beinhalten
+** Es ist zumindest ein request.http - File im http-requests - Ordner zu erstellen, damit die Abfrage der Endpoints dokumentiert ist
+** In der README.md ist eine sehr rudimentäre Dokumentation enthalten:
+*** Datenmodell
+*** Infos über die Endpoints - dies kann und soll durch einen Swagger ersetzt werden -> Link auf Swagger angeben
+*** Die Default-Swagger-Infos können und sollen durch Annotationen ergänzt werden.
+*** Die Angabe soll als Checkliste angegeben sein, damit auf einen Blick ersichtlich ist, was gemacht wurde.
+*** Wie startet man das Projekt.
+
+IMPORTANT: Es geht grundsätzlich *nicht* darum, dass alle Endpoints (dh für alle Entitäten)  *vollständig ausprogrmmiert* werden.
+Allerdings sind die verschiedenen Konzepte (Queries, Params, Request-Arten, POSTs mit einem und mehreren Objekten als csv oder json) einmal zu implementieren.
+
+* Das Frontend wird später erstellt (Termin wird nooch vereinbart)
+* Abgabetermin: 25. Mai 2021, 8:00
+* Als Repo wird https://classroom.github.com/a/xF7XTGoF[14-microproject] verwendet
